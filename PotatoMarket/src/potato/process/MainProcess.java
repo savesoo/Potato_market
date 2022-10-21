@@ -105,7 +105,7 @@ public class MainProcess {
 				inputMenu = InputString.inputInt();
 				
 				// 여기서 로그인 or 회원가입 처리 하도록 해야 합니다.
-				if(command.command.get(inputMenu).work() && inputMenu == 1) {
+				if(command.command.get(inputMenu).process() && inputMenu == 1) {
 					//로그인 성공이니까 멈춰야함
 					break;
 				}

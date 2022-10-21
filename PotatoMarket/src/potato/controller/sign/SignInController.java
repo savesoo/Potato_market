@@ -1,17 +1,17 @@
-package potato.process.sign;
+package potato.controller.sign;
 
+import potato.controller.IController;
 import potato.domain.LoginData;
 import potato.domain.Session;
-import potato.process.IProcess;
 import potato.service.UserService;
 import potato.util.InputString;
 
-public class SignIn implements IProcess {
+public class SignInController implements IController {
 	
 	private UserService service = new UserService();
 
 	@Override
-	public boolean work() {
+	public boolean process() {
 		String id, password;
 		int tryInput;
 		boolean result = false;

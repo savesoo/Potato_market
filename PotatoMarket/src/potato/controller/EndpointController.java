@@ -1,4 +1,4 @@
-package potato.process;
+package potato.controller;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -9,10 +9,10 @@ import potato.domain.Session;
 /**
  * 프로그램 종료 할 때, 파일화 작업(자동 로그인 때문에)이 필요해서 만든 클래스
  */
-public class EndpointProcess implements IProcess {
+public class EndpointController implements IController {
 
 	@Override
-	public boolean work() {
+	public boolean process() {
 		ObjectOutputStream outStream = null;
 		
 		try { 

@@ -1,10 +1,11 @@
+package potato.process;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.text.ParseException;
+import java.util.Scanner;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -12,18 +13,19 @@ import org.json.simple.parser.JSONParser;
 import potato.domain.LoginData;
 import potato.domain.Session;
 import potato.util.ConnectionProvider;
+import potato.util.InputString;
 
 /**
  * initialize 시켜야 함
  *
  */
-public class Process {
-	private static Process instance = null;
-	private Process() {}
+public class MainProcess {
+	private static MainProcess instance = null;
+	private MainProcess() {}
 	
-	public static Process getInstance() {
+	public static MainProcess getInstance() {
 		if(instance == null) {
-			instance = new Process();
+			instance = new MainProcess();
 		}
 		
 		return instance;
@@ -81,25 +83,40 @@ public class Process {
 		}
 	}
 	
-	// 아니 함수 명 바꾸고 싶다
-	public void offSystem() {
-		ObjectOutputStream outStream = null;
+	public void loginProcess() {
+		if(Session.getInstance().isLogin()) {
+			// 로그인 데이터 있을 경우 db에 데이터 비교해서 정상적인 로그인 처리 필요.
+			//return;
+		}
 		
-		try { 
-			outStream = new ObjectOutputStream(new FileOutputStream("session.ser"));
-			if(Session.getInstance().isLogin())
-				outStream.writeObject(Session.getInstance().getLoginData());
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if(outStream != null) {
-				try {
-					outStream.close();
-				} catch (IOException e) {
-					e.printStackTrace();
+		LoginCommand command = new LoginCommand();
+		
+		int inputMenu;
+		while(true) {
+			System.out.println("======================");
+			System.out.println("1. 로그인");
+			System.out.println("2. 회원가입");
+			System.out.println("3. 종료");
+			System.out.println("======================");
+			System.out.print("작업을 입력해주세요:>>");
+			try {
+				inputMenu = InputString.inputInt();
+				
+				// 여기서 로그인 or 회원가입 처리 하도록 해야 합니다.
+				if(command.command.get(inputMenu).work() && inputMenu == 1) {
+					//로그인 성공이니까 멈춰야함
+					break;
 				}
+			} catch(Exception e) {
+				System.out.println("작업에 오류가 발생하였습니다. 다시 시도해주세요.");
+				continue;
 			}
 		}
+		
+	}
+	
+	public void mainLoop() {
+		
 	}
 	
 }

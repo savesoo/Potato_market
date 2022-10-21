@@ -10,6 +10,8 @@ import org.json.simple.parser.JSONParser;
 
 import potato.domain.LoginData;
 import potato.domain.Session;
+import potato.process.command.AbsCommand;
+import potato.process.command.LoginCommand;
 import potato.service.UserService;
 import potato.util.ConnectionProvider;
 import potato.util.InputString;
@@ -91,7 +93,7 @@ public class MainProcess {
 			Session.getInstance().destroySession();
 		}
 		
-		LoginCommand command = new LoginCommand();
+		AbsCommand command = new LoginCommand();
 		
 		int inputMenu;
 		while(true) {

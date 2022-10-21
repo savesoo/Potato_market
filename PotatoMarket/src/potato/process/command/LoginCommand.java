@@ -1,15 +1,12 @@
-package potato.process;
+package potato.process.command;
 
 import java.util.HashMap;
-import java.util.Map;
 
 import potato.controller.EndpointController;
-import potato.controller.IController;
 import potato.controller.sign.SignInController;
 import potato.controller.sign.SignUpController;
 
-public class LoginCommand {
-	public Map<Integer, IController> command;
+public class LoginCommand extends AbsCommand {
 	
 	public LoginCommand() {
 		command = new HashMap<>();

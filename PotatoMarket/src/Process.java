@@ -11,15 +11,14 @@ import org.json.simple.parser.JSONParser;
 
 import potato.domain.LoginData;
 import potato.domain.Session;
+import potato.util.ConnectionProvider;
 
 /**
  * initialize 시켜야 함
- * @author Aram
  *
  */
 public class Process {
 	private static Process instance = null;
-	private JSONObject config = null;
 	private Process() {}
 	
 	public static Process getInstance() {
@@ -39,13 +38,15 @@ public class Process {
 		try {
 			fr = new FileReader("config.json");
 			Object obj = parser.parse(fr);
-			config = (JSONObject) obj;	
-		} catch (IOException | ParseException e) {
-			e.printStackTrace();
+			JSONObject config = (JSONObject) obj;
 			
-			System.exit(0); // config파일 불러오기 실패할 경우 db를 실행할 수 없으므로 종료 시켜야 함
+			ConnectionProvider.initializeConnect((String)config.get("dbUrl"), 
+					(String)config.get("dbUser"), 
+					(String)config.get("dbPassword"));
+			
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.exit(0); // config파일 불러오기 실패할 경우 db를 실행할 수 없으므로 종료 시켜야 함
 		} finally {
 			if(fr != null) {
 				try {
@@ -101,7 +102,4 @@ public class Process {
 		}
 	}
 	
-	public Object getConfigValue(String key) {
-		return config.get(key);
-	}
 }

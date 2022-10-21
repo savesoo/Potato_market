@@ -1,17 +1,16 @@
 package potato.process;
+
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.Scanner;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import potato.domain.LoginData;
 import potato.domain.Session;
+import potato.service.UserService;
 import potato.util.ConnectionProvider;
 import potato.util.InputString;
 
@@ -69,8 +68,6 @@ public class MainProcess {
 				session.createSession((LoginData)inStream.readObject());
 			}
 		} catch (Exception e) {
-			
-			e.getStackTrace();
 			// 기본 로그인 데이터 없는 거니까 굳이 오류 표시 x
 		} finally {
 			if(inStream != null) {
@@ -85,8 +82,12 @@ public class MainProcess {
 	
 	public void loginProcess() {
 		if(Session.getInstance().isLogin()) {
+			UserService service = new UserService();
 			// 로그인 데이터 있을 경우 db에 데이터 비교해서 정상적인 로그인 처리 필요.
-			//return;
+			if(service.signIn(Session.getInstance().getLoginData())) {
+				System.out.println("자동 로그인 성공!");
+				return;
+			}
 		}
 		
 		LoginCommand command = new LoginCommand();
@@ -112,10 +113,6 @@ public class MainProcess {
 				continue;
 			}
 		}
-		
-	}
-	
-	public void mainLoop() {
 		
 	}
 	

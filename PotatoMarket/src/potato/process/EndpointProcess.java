@@ -6,6 +6,9 @@ import java.io.ObjectOutputStream;
 
 import potato.domain.Session;
 
+/**
+ * 프로그램 종료 할 때, 파일화 작업(자동 로그인 때문에)이 필요해서 만든 클래스
+ */
 public class EndpointProcess implements IProcess {
 
 	@Override

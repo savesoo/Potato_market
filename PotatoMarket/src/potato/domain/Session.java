@@ -1,6 +1,5 @@
 package potato.domain;
 
-import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**

@@ -41,6 +41,11 @@ public class Session {
 		this.loginTime = new Timestamp(System.currentTimeMillis());
 	}
 	
+	public void destroySession() {
+		this.loginData = null;
+		this.loginTime = null;
+	}
+	
 	public void updateSession() {
 		this.loginTime = new Timestamp(System.currentTimeMillis());
 	}
@@ -60,5 +65,7 @@ public class Session {
 	public LoginData getLoginData() {
 		return loginData;
 	}
+	
+	
 	
 }

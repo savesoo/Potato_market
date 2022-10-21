@@ -88,6 +88,7 @@ public class MainProcess {
 				System.out.println("자동 로그인 성공!");
 				return;
 			}
+			Session.getInstance().destroySession();
 		}
 		
 		LoginCommand command = new LoginCommand();

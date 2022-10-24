@@ -84,11 +84,14 @@ public class MainProcess {
 	}
 	
 	public void loginProcess() {
-		if(Session.getInstance().isLogin()) {
+		long now = System.currentTimeMillis();
+		long lastLoginTime = Session.getInstance().getLoginTime().getTime();
+		if(Session.getInstance().isLogin() && (now - lastLoginTime < (24 * 60 * 60 * 1000))) {
 			UserService service = new UserService();
 			// 로그인 데이터 있을 경우 db에 데이터 비교해서 정상적인 로그인 처리 필요.
 			if(service.signIn(Session.getInstance().getLoginData())) {
 				System.out.println("자동 로그인 성공!");
+				Session.getInstance().updateSession();
 				return;
 			}
 			Session.getInstance().destroySession();

@@ -13,12 +13,12 @@ public class EncryptString {
 	
 	public static String encryptAES256(String str) throws Exception {
 		Cipher cipher = Cipher.getInstance(alg);
-        SecretKeySpec keySpec = new SecretKeySpec(KEY.getBytes(), "AES");
-        IvParameterSpec ivParamSpec = new IvParameterSpec(iv.getBytes());
-        cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivParamSpec);
+		SecretKeySpec keySpec = new SecretKeySpec(KEY.getBytes(), "AES");
+		IvParameterSpec ivParamSpec = new IvParameterSpec(iv.getBytes());
+		cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivParamSpec);
 
-        byte[] encrypted = cipher.doFinal(str.getBytes("UTF-8"));
-        
-        return Base64.getEncoder().encodeToString(encrypted);
+		byte[] encrypted = cipher.doFinal(str.getBytes("UTF-8"));
+
+		return Base64.getEncoder().encodeToString(encrypted);
 	}
 }

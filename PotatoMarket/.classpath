@@ -6,7 +6,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/park/Documents/GitHub/Potato_market/PotatoMarket/lib/json_simple.jar"/>
-	<classpathentry kind="lib" path="C:/Users/park/Documents/GitHub/Potato_market/PotatoMarket/lib/mysql-connector-java-8.0.30.jar"/>
+	<classpathentry kind="lib" path="lib/json_simple.jar"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-java-8.0.30.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

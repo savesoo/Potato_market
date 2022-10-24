@@ -9,10 +9,10 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 import potato.controller.IController;
-import potato.dao.Dao;
+import potato.dao.BoardDao;
 import potato.domain.Board;
 
-public abstract class BoardController implements Dao, IController {
+public abstract class BoardController implements IController {
 
 	Scanner sc;
 
@@ -41,7 +41,7 @@ public abstract class BoardController implements Dao, IController {
 			String dbUrl = "jdbc:mysql://localhost:3306/project";
 			Connection conn = DriverManager.getConnection(dbUrl, "scott", "test1234");
 
-			String sql = "insert into potato_board values (category=?, product=?, saleprice=?, tradeloc=?)";
+			String sql = "insert into potato_board values (category=?, product=?, saleprice=?, tradeloc=? )";
 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(3, category);

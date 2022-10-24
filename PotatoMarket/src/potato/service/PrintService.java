@@ -4,16 +4,16 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-import potato.dao.ProductDao;
+import potato.dao.BoardDao;
 import potato.domain.Board;
 import potato.util.ConnectionProvider;
 
-public class BoardPrintService {
-	
-	// 컨트롤러에서 요청을 받아와 게시물 리스트 출력 처리하는 클래스
-	ProductDao dao;
+public class PrintService {
 
-	public BoardPrintService(ProductDao dao) {
+	// 컨트롤러에서 요청을 받아와 게시물 리스트 출력 처리하는 클래스
+	BoardDao dao;
+
+	public PrintService(BoardDao dao) {
 		this.dao = dao;
 	}
 
@@ -28,7 +28,7 @@ public class BoardPrintService {
 			list = dao.select(conn); // 저장된 게시물 dao에서 불러오는 메소드 사용
 
 		} catch (SQLException e) {
-			
+
 		} finally {
 			if (conn != null) {
 				try {

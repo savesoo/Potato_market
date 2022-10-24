@@ -3,16 +3,19 @@ package potato.service;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import potato.dao.Dao;
 import potato.domain.Board;
 import potato.util.ConnectionProvider;
 import potato.dao.BoardDao;
 
 public class InsertService {
 
-	Dao dao = new BoardDao();
+BoardDao dao;
 	
-	public int insert(Board sale) {
+	public InsertService(BoardDao dao) {
+		this.dao = dao;
+	}
+	
+	public int insert(Board board) {
 		
 		int result = 0;
 		Connection conn = null;
@@ -20,7 +23,7 @@ public class InsertService {
 		try {
 			conn= ConnectionProvider.getConnection();
 			
-			result = dao.insert(conn, sale);
+			result = dao.insert(conn, board);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

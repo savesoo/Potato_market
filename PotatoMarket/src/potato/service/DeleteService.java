@@ -3,24 +3,26 @@ package potato.service;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import potato.dao.Dao;
+import potato.domain.Board;
 import potato.dao.BoardDao;
 import potato.util.ConnectionProvider;
-import potato.dao.BoardDao;
 
 public class DeleteService {
 
-	Dao dao = new BoardDao();
+	BoardDao dao;
 
-	public int delete(int boardid) {
+	public DeleteService(BoardDao dao) {
+		this.dao = dao;
+	}
 
+	public int delete(Board board) {
 		int result = 0;
 		Connection conn = null;
 
 		try {
 			conn = ConnectionProvider.getConnection();
 
-			result = dao.delete(conn, boardid);
+			result = dao.delete(conn, board);
 
 		} catch (SQLException e) {
 			e.printStackTrace();

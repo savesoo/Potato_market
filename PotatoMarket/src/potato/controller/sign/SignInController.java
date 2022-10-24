@@ -4,6 +4,7 @@ import potato.controller.IController;
 import potato.domain.LoginData;
 import potato.domain.Session;
 import potato.service.UserService;
+import potato.util.EncryptString;
 import potato.util.InputString;
 
 public class SignInController implements IController {
@@ -24,6 +25,13 @@ public class SignInController implements IController {
 			System.out.print("pw을 입력해주세요:>>");
 			password = InputString.inputDefaultString();
 			System.out.println("======================");
+			
+			try {
+				password = EncryptString.encryptAES256(password);
+			} catch (Exception e) {
+				// 암호화 실패시... 어차피 로그인은 안될것.
+				e.printStackTrace();
+			}
 			
 			// 로그인 프로세스 따라 할 게 있음
 			LoginData data = new LoginData(id, password);

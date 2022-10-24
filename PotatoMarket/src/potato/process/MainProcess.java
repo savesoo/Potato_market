@@ -8,6 +8,7 @@ import java.io.ObjectInputStream;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import potato.controller.EndpointController;
 import potato.domain.LoginData;
 import potato.domain.Session;
 import potato.process.command.AbsCommand;
@@ -109,6 +110,7 @@ public class MainProcess {
 				// 여기서 로그인 or 회원가입 처리 하도록 해야 합니다.
 				if(command.command.get(inputMenu).process() && inputMenu == 1) {
 					//로그인 성공이니까 멈춰야함
+					System.out.println("로그인 성공");
 					break;
 				}
 			} catch(Exception e) {
@@ -119,4 +121,7 @@ public class MainProcess {
 		
 	}
 	
+	public void endpointProcess() {
+		new EndpointController().process();
+	}
 }

@@ -10,5 +10,7 @@ public class Main {
 		MainProcess.getInstance().initialize();
 		
 		MainProcess.getInstance().loginProcess();
+		
+		MainProcess.getInstance().endpointProcess();
 	}
 }

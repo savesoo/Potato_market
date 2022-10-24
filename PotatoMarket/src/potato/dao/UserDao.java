@@ -10,7 +10,7 @@ import potato.domain.LoginData;
 public class UserDao {
 	public int selectByUserIdAndPw(Connection conn, LoginData loginData) throws SQLException {
 		int result = 0;
-		String sql = "Select * from user where id = ? and password = ?";
+		String sql = "Select * from potato_user where userid = ? and password = ?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		

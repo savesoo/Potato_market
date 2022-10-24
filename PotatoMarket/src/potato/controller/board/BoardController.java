@@ -11,30 +11,26 @@ import java.util.Scanner;
 import potato.controller.IController;
 import potato.dao.BoardDao;
 import potato.domain.Board;
+import potato.util.InputString;
 
 public abstract class BoardController implements IController {
-
-	Scanner sc;
-
-	public BoardController() {
-		sc = new Scanner(System.in);
-	}
-
+	
+	// 게시글 작성
 	public void insert() {
 
 		System.out.println("판매글 입력을 시작합니다.");
 
 		System.out.println("카테고리>> /n(1.생활용품, 2.패션/잡화, 3.전자제품, 4.도서, 5.반려동물용품, 6.기타) ");
-		int category = Integer.parseInt(sc.nextLine());
+		int category = InputString.inputInt();
 
 		System.out.println("판매물품 >> ");
-		String product = sc.nextLine();
+		String product = InputString.inputDefaultString();
 
 		System.out.println("판매금액 >> ");
-		int saleprice = Integer.parseInt(sc.nextLine());
-
+		int saleprice = InputString.inputInt();
+		
 		System.out.println("거래지역 >> /n (ex.서울시=>서울, 영양군=>영양)");
-		String tradeloc = sc.nextLine();
+		String tradeloc = InputString.inputDefaultString();
 
 		try {
 
@@ -44,10 +40,10 @@ public abstract class BoardController implements IController {
 			String sql = "insert into potato_board values (category=?, product=?, saleprice=?, tradeloc=? )";
 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(3, category);
-			pstmt.setString(4, product);
-			pstmt.setInt(6, saleprice);
-			pstmt.setString(8, tradeloc);
+			pstmt.setInt(1, category);
+			pstmt.setString(2, product);
+			pstmt.setInt(3, saleprice);
+			pstmt.setString(4, tradeloc);
 
 			int result = pstmt.executeUpdate();
 
@@ -64,6 +60,7 @@ public abstract class BoardController implements IController {
 
 	}
 
+	
 	private int SelectByBoardid() {
 		// 저장된 게시글번호 불러오기
 
@@ -93,41 +90,44 @@ public abstract class BoardController implements IController {
 
 	}
 
+	// 게시글 수정
 	public void update() {
 		
 		int search = SelectByBoardid();
 
 		System.out.println("수정할 게시글번호를 입력해주세요. >> ");
-		int boardid = Integer.parseInt(sc.nextLine());
+		int boardid = InputString.inputInt();
 
 		if (boardid == search) {
 
 			System.out.println("게시글 수정이 시작됩니다.");
 
 			System.out.println("카테고리>> /n(1.생활용품, 2.패션/잡화, 3.전자제품, 4.도서, 5.반려동물용품, 6.기타) ");
-			int category = Integer.parseInt(sc.nextLine());
+			int category = InputString.inputInt();
 
 			System.out.println("판매물품 >> ");
-			String product = sc.nextLine();
+			String product = InputString.inputDefaultString();
 
 			System.out.println("판매금액 >> ");
-			int saleprice = Integer.parseInt(sc.nextLine());
+			int saleprice = InputString.inputInt();
 
 			System.out.println("거래지역 >> /n (ex.서울시=>서울, 영양군=>영양)");
-			String tradeloc = sc.nextLine();
+			String tradeloc = InputString.inputDefaultString();
 
 			try {
 
 				String dbUrl = "jdbc:mysql://localhost:3306/project";
 				Connection conn = DriverManager.getConnection(dbUrl, "scott", "test1234");
 
-				String sql = "update potato_board set category=?, product=?, saleprice=?, tradeloc=? where boardid=?";
+				String sql = "update potato_board set category=?, product=?, saleprice=?, tradeloc=? where boardid=? and userid=?";
 
 				PreparedStatement pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(3, category);
-				pstmt.setString(4, product);
-				pstmt.setInt(6, saleprice);
-				pstmt.setString(8, tradeloc);
+				pstmt.setInt(1, category);
+				pstmt.setString(2, product);
+				pstmt.setInt(3, saleprice);
+				pstmt.setString(4, tradeloc);
+				pstmt.setInt(5, boardid);
+				//pstmt.setString(6, userid);
 
 				int result = pstmt.executeUpdate();
 
@@ -151,7 +151,7 @@ public abstract class BoardController implements IController {
 		int search = SelectByBoardid();
 		
 		System.out.println("삭제할 게시글번호를 입력하세요. >> ");
-		int boardid = Integer.parseInt(sc.nextLine());
+		int boardid = InputString.inputInt();
 
 		if (boardid == search) {
 			
@@ -162,7 +162,7 @@ public abstract class BoardController implements IController {
 				String dbUrl = "jdbc:mysql://localhost:3306/project";
 				Connection conn = DriverManager.getConnection(dbUrl, "scott", "test1234");
 
-				String sql = "delete from potato_board where boardid=?";
+				String sql = "delete from potato_board where boardid=? and userid=?";
 
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, boardid);

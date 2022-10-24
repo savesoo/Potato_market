@@ -45,7 +45,7 @@ public class PrintController implements IController {
 			System.out.println("2. 상품 구매하기");
 			System.out.println("3. 판매 게시글 수정");
 			System.out.println("4. 판매 게시글 삭제");
-			System.out.println("5. 내 구매 내역 확인");
+			System.out.println("5. 내 판매 내역 확인"); // 판매? 구매???
 			System.out.println("6. 이전 화면으로 돌아가기");
 			System.out.println("======================");
 			System.out.println();

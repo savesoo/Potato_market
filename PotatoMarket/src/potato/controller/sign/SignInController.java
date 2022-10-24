@@ -20,9 +20,9 @@ public class SignInController implements IController {
 			System.out.println("로그인");
 			System.out.println("======================");
 			System.out.print("id를 입력해주세요:>>");
-			id = InputString.scan.nextLine();
+			id = InputString.inputDefaultString();
 			System.out.print("pw을 입력해주세요:>>");
-			password = InputString.scan.nextLine();
+			password = InputString.inputDefaultString();
 			System.out.println("======================");
 			
 			// 로그인 프로세스 따라 할 게 있음
@@ -35,7 +35,7 @@ public class SignInController implements IController {
 			}
 
 			System.out.println("로그인에 실패했습니다. 다시 로그인 하겠습니까?");
-			System.out.print("0. 돌아가기 / 그외. 재시도>>");
+			System.out.print("0. 처음으로 돌아가기 / 그외. 재시도>>");
 			tryInput = InputString.inputInt();
 			if(tryInput == 0) {
 				break;

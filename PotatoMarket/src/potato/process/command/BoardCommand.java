@@ -14,7 +14,7 @@ public class BoardCommand extends AbsCommand {
 		//command.put(2, new ); // 구매
 		command.put(3, new UpdateController()); // 수정
 		command.put(4, new DeleteController()); // 삭제
-		command.put(5, new HistoryController()); // 구매 내역 확인
+		//command.put(5, new HistoryController()); // 구매 내역 확인
 		//command.put(6, new ()); // 돌아가기	
 		
 		

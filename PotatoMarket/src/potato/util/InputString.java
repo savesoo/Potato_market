@@ -30,7 +30,7 @@ public class InputString {
 		
 		while(true) {
 			result = scan.nextLine();
-			if(result.getBytes().length < STRING_LEN_255 ) {
+			if(result.trim().length() != 0 && result.getBytes().length < STRING_LEN_255 ) {
 				break;
 			}
 			System.out.println("입력된 문자의 길이가 깁니다. 다시 입력해주세요.");

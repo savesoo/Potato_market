@@ -10,9 +10,8 @@ public class Main {
 		MainProcess.getInstance().initialize();
 		
 		MainProcess.getInstance().loginProcess();
-		
-		// -> 여기에 이제 분기점이 들어갑니다
-		// 들어가는 info(게시글 보기 / 판매 내역 보기 / 구매 내역 보기 / 회원 정보)
+
+		MainProcess.getInstance().mainProcess();
 		
 		MainProcess.getInstance().endpointProcess();
 	}

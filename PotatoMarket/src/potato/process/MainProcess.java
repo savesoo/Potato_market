@@ -13,6 +13,7 @@ import potato.domain.LoginData;
 import potato.domain.Session;
 import potato.process.command.AbsCommand;
 import potato.process.command.LoginCommand;
+import potato.process.command.MainCommand;
 import potato.service.UserService;
 import potato.util.ConnectionProvider;
 import potato.util.InputString;
@@ -122,6 +123,29 @@ public class MainProcess {
 			}
 		}
 		
+	}
+	
+	public void mainProcess() {
+		AbsCommand command = new MainCommand();
+		int inputMenu;
+		while(true) {
+			System.out.println("======================");
+			System.out.println("1. 전체글 보기");
+			System.out.println("2. 내 판매글 보기");
+			System.out.println("3. 내 구매내역 보기");
+			System.out.println("4. 회원 정보 보기");
+			System.out.println("5. 프로그램 종료");
+			System.out.println("======================");
+			System.out.print("작업을 입력해주세요:>>");
+			try {
+				inputMenu = InputString.inputInt();
+				
+				command.command.get(inputMenu).process(); // 여기에... 이제 처리 해주시면 됩니다. 여기가 루프 돌아야 합니다.
+			} catch(Exception e) {
+				System.out.println("작업에 오류가 발생하였습니다. 다시 시도해주세요.");
+				continue;
+			}
+		}
 	}
 	
 	public void endpointProcess() {

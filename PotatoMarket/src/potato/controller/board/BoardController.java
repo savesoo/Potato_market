@@ -61,50 +61,13 @@ public abstract class BoardController implements IController {
 
 	}
 
-	
-	private int SelectByBoardid() {
-		// 저장된 게시글번호 불러오기
-
-		int boardid = 0;
-		String userid = Session.getInstance().getLoginData().getId();
-
-		try {
-					
-			
-			String dbUrl = "jdbc:mysql://localhost:3306/project";
-			Connection conn;
-			conn = DriverManager.getConnection(dbUrl, "scott", "test1234");
-
-			String sql = "select * from potato_board where userid=?";
-
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			ResultSet rs = pstmt.executeQuery();
-			while(rs.next()) {
-				if(userid == sql) {
-				rs.getInt(boardid);
-				}
-			}
-			
-			rs.close();
-			pstmt.close();
-			conn.close();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return boardid;
-
-	}
-
+	// 게시글 수정
 	public void update() {
 		
-		int boardid = SelectByBoardid();
+		int boardid = 0;
 
 		System.out.println("수정할 게시글번호를 입력해주세요. >> ");
-		int no = InputString.inputInt();
-
-		if (boardid == no) {
+		boardid = InputString.inputInt();
 
 			System.out.println("게시글 수정이 시작됩니다.");
 
@@ -147,19 +110,15 @@ public abstract class BoardController implements IController {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		} else {
-			System.out.println("게시글번호가 일치하지 않습니다.");
-		}
-	}
-
+		} 
+	
+	// 게시글 삭제
 	public void delete() {
 
-		int boardid = SelectByBoardid();
+		int boardid = 0;
 		
 		System.out.println("삭제할 게시글번호를 입력하세요. >> ");
-		int no = InputString.inputInt();
-
-		if (boardid == no) {
+		boardid = InputString.inputInt();
 			
 			System.out.println("삭제가 진행됩니다.");
 
@@ -186,10 +145,8 @@ public abstract class BoardController implements IController {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		} else {
-			System.out.println("게시글번호가 일치하지 않습니다.");
-		}
-	}
+		} 
+	
 
 	public void exit() {
 

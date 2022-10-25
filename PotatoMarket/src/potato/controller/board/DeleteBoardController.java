@@ -14,8 +14,6 @@ public class DeleteBoardController implements IController {
 
 	@Override
 	public boolean process() {
-
-		Board board = new Board();
 		
 		System.out.println("게시글 삭제가 진행됩니다.");
 
@@ -30,7 +28,7 @@ public class DeleteBoardController implements IController {
 			System.out.println("작업이 가능합니다.");
 		}
 
-		int result = service.deleteBoard(board);
+		int result = service.deleteBoard(boardid);
 
 		if (result > 0) {
 			System.out.println("삭제되었습니다.");

@@ -71,9 +71,10 @@ public class BoardDao {
 
 	
 	// 게시물 삭제
-	public int deleteBoard(Connection conn, Board board) throws SQLException {
-
+	public int deleteBoard(Connection conn, int boardid) throws SQLException {
+		
 		int result = 0;
+		String userid = Session.getInstance().getLoginData().getId();
 		PreparedStatement pstmt = null;
 
 		String sql = "delete from potato_board where boardid=? and userid=? and salestatus=1";
@@ -81,8 +82,8 @@ public class BoardDao {
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, board.getBoardid());
-			pstmt.setString(2, board.getUserid());
+			pstmt.setInt(1, boardid);
+			pstmt.setString(2, userid);
 
 			result = pstmt.executeUpdate();
 
@@ -139,7 +140,7 @@ public class BoardDao {
 				rs.getString("tradeloc"));
 	}
 
-	// 내 판매글(=내역) 조회. 단 판매상태는 구분 X
+	// 내 판매글(=판매내역) 조회. 단 판매상태는 구분 X
 	public List<Board> showsellHistory(Connection conn) throws SQLException {
 
 		List<Board> list = new ArrayList<>();
@@ -216,7 +217,7 @@ public class BoardDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = "select * from potato_board where boardid=? and userid=?"; // boardid 랑 내 userid로 select 받아옴 -> service call
+		String sql = "SELECT * FROM potato_board WHERE boardid=? and userid=?"; // boardid랑 내 userid로 select 받아옴 -> service call
 
 		try {
 			pstmt = conn.prepareStatement(sql);

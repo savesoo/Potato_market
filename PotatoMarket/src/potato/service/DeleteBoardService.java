@@ -15,14 +15,14 @@ public class DeleteBoardService {
 		this.dao = dao;
 	}
 
-	public int deleteBoard(Board board) {
+	public int deleteBoard(int boardid) {
 		int result = 0;
 		Connection conn = null;
 
 		try {
 			conn = ConnectionProvider.getConnection();
 
-			result = dao.deleteBoard(conn, board);
+			result = dao.deleteBoard(conn, boardid);
 
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -17,14 +17,14 @@ public class SellHistoryService {
 		this.dao = dao;
 	}
 	
-	public List<Board> myPurchaseHistory() {
+	public List<Board> mySellHistory() {
 		
 		Connection conn =null;
 		List<Board> list =null;
 
 		try {
 			conn = ConnectionProvider.getConnection();
-			list = dao.select(conn);
+			list = dao.showsellHistory(conn);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

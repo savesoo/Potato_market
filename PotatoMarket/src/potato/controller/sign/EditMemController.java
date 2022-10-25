@@ -18,14 +18,21 @@ public class EditMemController implements IController {
 			System.out.println();
 			System.out.println("회원 정보를 수정합니다.");
 			System.out.println();
-			System.out.print("1. 비밀번호를 수정해주세요 >> ");
-			String password = InputString.inputDefaultString();
+			String password = null;
+			boolean run = true;
 
-			try {
-				password = EncryptString.encryptAES256(password);
-			} catch (Exception e) {
-				System.out.println("프로그램 에러.");
-				return false;
+			while (run) {
+				System.out.print("1-1. 비밀번호를 수정해주세요 >> ");
+				password = InputString.inputDefaultString();
+				System.out.print("1-2. 한 번 더 입력해주세요 >> ");
+				run = CheckPassword.chkPassword(password);
+
+				try {
+					password = EncryptString.encryptAES256(password);
+				} catch (Exception e) {
+					System.out.println("프로그램 에러.");
+					return false;
+				}
 			}
 
 			System.out.print("2. 거주지역을 수정해주세요 >> ");

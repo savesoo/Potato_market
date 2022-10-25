@@ -30,7 +30,7 @@ public class SignUpController implements IController {
 				System.out.print("2-1. 비밀번호를 첫 설정해주세요 >>");
 				password = InputString.inputDefaultString();
 				System.out.print("2-2. 비밀번호를 한 번 더 입력하세요 >> ");
-				run = chkPassword(password);
+				run = CheckPassword.chkPassword(password);
 
 				try {
 					password = EncryptString.encryptAES256(password);
@@ -64,18 +64,5 @@ public class SignUpController implements IController {
 		return true;
 	}
 	
-	// 확인용 비밀번호 체크
-	public boolean chkPassword(String password) {
-		boolean result = true;
-		
-		String checkPassword = InputString.inputDefaultString();
-		if (!password.equals(checkPassword)) {
-			System.out.println("비밀번호가 일치하지 않습니다.");
-			result = true;
-		} else {
-			result = false;
-		}
-		return result;
-	}
 
 }

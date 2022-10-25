@@ -10,10 +10,9 @@ import potato.process.command.BoardCommand;
 import potato.service.PrintService;
 import potato.util.InputString;
 
+// 게시물 보여줄 것을 서비스에 요청하는 서비스 클래스
+// List<Board> 출력
 public class PrintController implements IController {
-
-	// 게시물 보여줄 것을 서비스에 요청하는 서비스 클래스
-	// List<Board> 출력
 
 	PrintService service = new PrintService(new BoardDao());
 
@@ -29,7 +28,8 @@ public class PrintController implements IController {
 		} else {
 			System.out.println("현재 등록된 게시물이 없습니다.");
 		}
-		
+	
+		// 세부 선택지(커맨드) 추가
 		AbsCommand command = new BoardCommand();
 		int inputmenu;
 		while (true) {
@@ -39,7 +39,7 @@ public class PrintController implements IController {
 			System.out.println("2. 상품 구매하기");
 			System.out.println("3. 판매 게시글 수정");
 			System.out.println("4. 판매 게시글 삭제");
-			System.out.println("5. 내 판매 내역 확인"); // 판매? 구매???
+			System.out.println("5. 내 판매 내역 확인");
 			System.out.println("6. 이전 화면으로 돌아가기");
 			System.out.println("======================");
 			System.out.println();

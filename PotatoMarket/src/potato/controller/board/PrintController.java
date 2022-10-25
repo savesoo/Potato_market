@@ -29,13 +29,7 @@ public class PrintController implements IController {
 		} else {
 			System.out.println("현재 등록된 게시물이 없습니다.");
 		}
-
-		return false;
-
-	}
-
-	public void boardProcess() {
-
+		
 		AbsCommand command = new BoardCommand();
 		int inputmenu;
 		while (true) {
@@ -51,9 +45,10 @@ public class PrintController implements IController {
 			System.out.println();
 
 			inputmenu = InputString.inputInt();
-
+			if(inputmenu==6) {
+				return false;
+			}
 			command.command.get(inputmenu).process();
-
 		}
 	}
 

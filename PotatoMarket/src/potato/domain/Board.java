@@ -96,9 +96,10 @@ public class Board {
 
 	@Override
 	public String toString() {
-		return "판매글 [게시글 번호 | " + boardid + " | 판매자 | " + userid + " | 카테고리 | " + category + " | 상품명 | " + product
-				+ " | 판매금액 | " + saleprice + " | 판매상태 | " + salestatus + " | 작성일시 | " + writedate + " | 거래 희망지역 | "
-				+ tradeloc + "]";
+		return "================================================================= \n [게시글 번호] "
+				+ boardid + "\n [ 카테고리 ] " + category + "\n [ 판매자 ] " + userid + "\n [ 상품명 ] " + product
+				+ " [ 판매금액 ] " + saleprice + " [ 판매상태 ] " + salestatus + " [거래 희망지역] " + tradeloc + "\n [ 작성일시 ] "
+				+ writedate ;
 	}
 	
 	

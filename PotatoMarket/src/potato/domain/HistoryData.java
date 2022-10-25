@@ -1,12 +1,12 @@
 package potato.domain;
 
-public class PerchaseData {
+public class HistoryData {
 
-	String userid;
-	int boardid;
-	int orderid;
+	private String userid;
+	private int boardid;
+	private int orderid;
 
-	public PerchaseData(String userid, int boardid, int orderid) {
+	public HistoryData(String userid, int boardid, int orderid) {
 		super();
 		this.userid = userid;
 		this.boardid = boardid;
@@ -27,7 +27,7 @@ public class PerchaseData {
 
 	@Override
 	public String toString() {
-		return "PerchaseData [userid=" + userid + ", boardid=" + boardid + ", orderid=" + orderid + "]";
-	}
+		return "HistoryData [userid=" + userid + ", boardid=" + boardid + ", orderid=" + orderid + "]";
+	} 
 
 }

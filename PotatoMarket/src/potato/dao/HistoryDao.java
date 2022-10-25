@@ -4,12 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import potato.domain.PerchaseData;
+import potato.domain.HistoryData;
 
-public class PerchaseDao {
+public class HistoryDao {
 
 //	구매내역 조회
-	public int perchase(Connection conn, PerchaseData perchasedata) throws SQLException {
+	public int history(Connection conn, HistoryData historydata) throws SQLException {
 
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -18,9 +18,9 @@ public class PerchaseDao {
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, perchasedata.getUserid());
-			pstmt.setInt(2, perchasedata.getBoardid());
-			pstmt.setInt(3, perchasedata.getOrderid());
+			pstmt.setString(1, historydata.getUserid());
+			pstmt.setInt(2, historydata.getBoardid());
+			pstmt.setInt(3, historydata.getOrderid());
 
 			result = pstmt.executeUpdate();
 

@@ -134,9 +134,10 @@ public class MainProcess {
 			System.out.println("======================");
 			System.out.println("1. 전체글 보기");
 			System.out.println("2. 내 판매글 보기");
-			System.out.println("3. 내 구매내역 보기");
-			System.out.println("4. 회원 정보 보기");
-			System.out.println("5. 프로그램 종료");
+			System.out.println("3. 판매 글쓰기");
+			System.out.println("4. 내 구매내역 보기");
+			System.out.println("5. 회원 정보 보기");
+			System.out.println("6. 프로그램 종료");
 			System.out.println("======================");
 			System.out.print("작업을 입력해주세요:>>");
 			try {

@@ -11,6 +11,7 @@ import java.util.Scanner;
 import potato.controller.IController;
 import potato.dao.BoardDao;
 import potato.domain.Board;
+import potato.domain.Session;
 import potato.util.InputString;
 
 public abstract class BoardController implements IController {
@@ -20,7 +21,7 @@ public abstract class BoardController implements IController {
 
 		System.out.println("판매글 입력을 시작합니다.");
 
-		System.out.println("카테고리>> /n(1.생활용품, 2.패션/잡화, 3.전자제품, 4.도서, 5.반려동물용품, 6.기타) ");
+		System.out.println("카테고리>> \n(1.생활용품, 2.패션/잡화, 3.전자제품, 4.도서, 5.반려동물용품, 6.기타) ");
 		int category = InputString.inputInt();
 
 		System.out.println("판매물품 >> ");
@@ -29,7 +30,7 @@ public abstract class BoardController implements IController {
 		System.out.println("판매금액 >> ");
 		int saleprice = InputString.inputInt();
 		
-		System.out.println("거래지역 >> /n (ex.서울시=>서울, 영양군=>영양)");
+		System.out.println("거래지역 >> \n (ex.서울시=>서울, 영양군=>영양)");
 		String tradeloc = InputString.inputDefaultString();
 
 		try {
@@ -37,7 +38,7 @@ public abstract class BoardController implements IController {
 			String dbUrl = "jdbc:mysql://localhost:3306/project";
 			Connection conn = DriverManager.getConnection(dbUrl, "scott", "test1234");
 
-			String sql = "insert into potato_board values (category=?, product=?, saleprice=?, tradeloc=? )";
+			String sql = "insert into potato_board values (category=?, product=?, saleprice=?, tradeloc=?, )";
 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, category);
@@ -64,20 +65,26 @@ public abstract class BoardController implements IController {
 	private int SelectByBoardid() {
 		// 저장된 게시글번호 불러오기
 
-		int no = 0;
+		int boardid = 0;
+		String userid = Session.getInstance().getLoginData().getId();
 
 		try {
+					
+			
 			String dbUrl = "jdbc:mysql://localhost:3306/project";
 			Connection conn;
 			conn = DriverManager.getConnection(dbUrl, "scott", "test1234");
 
-			String sql = "select * from potato_board where boardid=?";
+			String sql = "select * from potato_board where userid=?";
 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, no);
-
 			ResultSet rs = pstmt.executeQuery();
-
+			while(rs.next()) {
+				if(userid == sql) {
+				rs.getInt(boardid);
+				}
+			}
+			
 			rs.close();
 			pstmt.close();
 			conn.close();
@@ -86,23 +93,22 @@ public abstract class BoardController implements IController {
 			e.printStackTrace();
 		}
 
-		return no;
+		return boardid;
 
 	}
 
-	// 게시글 수정
 	public void update() {
 		
-		int search = SelectByBoardid();
+		int boardid = SelectByBoardid();
 
 		System.out.println("수정할 게시글번호를 입력해주세요. >> ");
-		int boardid = InputString.inputInt();
+		int no = InputString.inputInt();
 
-		if (boardid == search) {
+		if (boardid == no) {
 
 			System.out.println("게시글 수정이 시작됩니다.");
 
-			System.out.println("카테고리>> /n(1.생활용품, 2.패션/잡화, 3.전자제품, 4.도서, 5.반려동물용품, 6.기타) ");
+			System.out.println("카테고리>> \n(1.생활용품, 2.패션/잡화, 3.전자제품, 4.도서, 5.반려동물용품, 6.기타) ");
 			int category = InputString.inputInt();
 
 			System.out.println("판매물품 >> ");
@@ -111,7 +117,7 @@ public abstract class BoardController implements IController {
 			System.out.println("판매금액 >> ");
 			int saleprice = InputString.inputInt();
 
-			System.out.println("거래지역 >> /n (ex.서울시=>서울, 영양군=>영양)");
+			System.out.println("거래지역 >> \n (ex.서울시=>서울, 영양군=>영양)");
 			String tradeloc = InputString.inputDefaultString();
 
 			try {
@@ -127,7 +133,7 @@ public abstract class BoardController implements IController {
 				pstmt.setInt(3, saleprice);
 				pstmt.setString(4, tradeloc);
 				pstmt.setInt(5, boardid);
-				//pstmt.setString(6, userid);
+				pstmt.setString(6, Session.getInstance().getId());
 
 				int result = pstmt.executeUpdate();
 
@@ -148,12 +154,12 @@ public abstract class BoardController implements IController {
 
 	public void delete() {
 
-		int search = SelectByBoardid();
+		int boardid = SelectByBoardid();
 		
 		System.out.println("삭제할 게시글번호를 입력하세요. >> ");
-		int boardid = InputString.inputInt();
+		int no = InputString.inputInt();
 
-		if (boardid == search) {
+		if (boardid == no) {
 			
 			System.out.println("삭제가 진행됩니다.");
 
@@ -166,6 +172,7 @@ public abstract class BoardController implements IController {
 
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, boardid);
+				pstmt.setString(2,Session.getInstance().getLoginData().getId());
 
 				int result = pstmt.executeUpdate();
 

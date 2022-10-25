@@ -1,14 +1,18 @@
-package potato.controller.perchase;
+package potato.controller.purchase;
+
+import java.util.Scanner;
 
 import potato.controller.IController;
-import potato.dao.PerchaseDao;
-import potato.domain.PerchaseData;
-import potato.service.PerchaseService;
+import potato.dao.HistoryDao;
+import potato.domain.HistoryData;
+import potato.domain.Session;
+import potato.service.HistoryService;
 import potato.util.InputString;
 
-public class PerchaseController implements IController {
-
-	PerchaseService service = new PerchaseService(new PerchaseDao());
+public class HistoryController implements IController {
+	
+	
+	HistoryService service = new HistoryService(new HistoryDao());
 
 	@Override
 	public boolean process() {
@@ -25,8 +29,8 @@ public class PerchaseController implements IController {
 		System.out.println("주문번호 입력 >> ");
 		orderid = InputString.inputInt();
 
-		PerchaseData perchasedata = new PerchaseData(userid, boardid, orderid);
-		int result = service.perchase(perchasedata);
+		HistoryData historydata = new HistoryData(userid, boardid, orderid);
+		int result = service.history(historydata);
 		
 		if (result > 0) {
 			System.out.println("입력되었습니다.");

@@ -36,6 +36,13 @@ public class InsertBoardController implements IController {
 		
 		if (result > 0) {
 			System.out.println("입력되었습니다.");
+			
+			System.out.println("====================================");
+			System.out.println("아이디\t카테고리\t판매물품\t판매금액\t거래지역");
+			System.out.println("====================================");
+			System.out.println(userid+"\t"+category+"\t"+product +"\t"+saleprice+"\t"+tradeloc);
+			
+			
 		} else {
 			System.out.println("입력 실패");
 		}

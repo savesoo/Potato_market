@@ -15,8 +15,8 @@ public class SellHistoryController implements IController {
 	@Override
 	public boolean process() {
 		
-		// userid boardid 일치
-		List<Board> list = service.myPurchaseHistory();
+		// 확인 조건 : userid 일치
+		List<Board> list = service.mySellHistory();
 		for(Board b : list) {
 			System.out.println(b);
 		}

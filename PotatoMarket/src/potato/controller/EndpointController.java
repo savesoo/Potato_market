@@ -17,8 +17,10 @@ public class EndpointController implements IController {
 		
 		try { 
 			outStream = new ObjectOutputStream(new FileOutputStream("session.ser"));
-			if(Session.getInstance().isLogin())
+			if(Session.getInstance().isLogin()) {
+				Session.getInstance().updateSession();
 				outStream.writeObject(Session.getInstance().getLoginData());
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {

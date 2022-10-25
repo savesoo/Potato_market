@@ -4,11 +4,13 @@ import potato.controller.IController;
 import potato.dao.BoardDao;
 import potato.domain.Board;
 import potato.service.DeleteBoardService;
+import potato.service.PrintBoardService;
 import potato.util.InputString;
 
 public class DeleteBoardController implements IController {
 
 	DeleteBoardService service = new DeleteBoardService(new BoardDao());
+	PrintBoardService ps = new PrintBoardService(new BoardDao());
 
 	@Override
 	public boolean process() {
@@ -19,6 +21,14 @@ public class DeleteBoardController implements IController {
 
 		System.out.println("삭제할 게시글 번호 >>");
 		int boardid = InputString.inputInt();
+		
+		// 작성자 아닐시 삭제 불가
+		if(ps.verifyID(boardid)!=true) {
+			System.out.println("권한은 작성자 본인에게만 주어집니다.");
+			return false;
+		} else {
+			System.out.println("작업이 가능합니다.");
+		}
 
 		int result = service.deleteBoard(board);
 

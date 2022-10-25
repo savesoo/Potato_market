@@ -97,7 +97,7 @@ public class UserData {
 
 	@Override
 	public String toString() {
-		return userid + "\t" + joindate + "\t" + loc + "\t   " + nickname;
+		return "\t아이디 : " +userid + "\n" + "\t가입일 : " +joindate + "\n" + "\t거주지역 : " +loc + "\n" + "\t닉네임 : " +nickname;
 	}
 	
 	

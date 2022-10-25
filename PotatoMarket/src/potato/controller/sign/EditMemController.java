@@ -18,23 +18,31 @@ public class EditMemController implements IController {
 			System.out.println();
 			System.out.println("회원 정보를 수정합니다.");
 			System.out.println();
-			System.out.print("비밀번호를 수정해주세요 >> ");
-			String password = InputString.inputDefaultString();
+			String password = null;
+			boolean run = true;
 
-			try {
-				password = EncryptString.encryptAES256(password);
-			} catch (Exception e) {
-				System.out.println("프로그램 에러.");
-				return false;
+			while (run) {
+				System.out.print("1-1. 비밀번호를 수정해주세요 >> ");
+				password = InputString.inputDefaultString();
+				System.out.print("1-2. 한 번 더 입력해주세요 >> ");
+				run = CheckPassword.chkPassword(password);
+
+				try {
+					password = EncryptString.encryptAES256(password);
+				} catch (Exception e) {
+					System.out.println("프로그램 에러.");
+					return false;
+				}
 			}
 
-			System.out.print("거주지역을 수정해주세요 >> ");
+			System.out.print("2. 거주지역을 수정해주세요 >> ");
 			String loc = InputString.inputDefaultString();
-			System.out.print("닉네임을 수정해주세요 >> ");
+			System.out.print("3. 닉네임을 수정해주세요 >> ");
 			String nickname = InputString.inputDefaultString();
 
 			UserData userdata = new UserData(password, loc, nickname);
 			if (service.editMem(userdata)) {
+				System.out.println();
 				System.out.println("수정이 완료되었습니다!");
 				System.out.println();
 				result = true;

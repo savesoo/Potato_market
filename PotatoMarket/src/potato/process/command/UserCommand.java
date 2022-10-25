@@ -2,7 +2,6 @@ package potato.process.command;
 
 import java.util.HashMap;
 
-import potato.controller.sign.DeleteMemController;
 import potato.controller.sign.EditMemController;
 import potato.controller.sign.ViewInfoController;
 

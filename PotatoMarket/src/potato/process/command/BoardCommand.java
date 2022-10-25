@@ -5,7 +5,6 @@ import java.util.HashMap;
 import potato.controller.board.DeleteBoardController;
 import potato.controller.board.InsertBoardController;
 import potato.controller.board.ProductSearchController;
-import potato.controller.board.SellHistoryController;
 import potato.controller.board.UpdateBoardController;
 
 public class BoardCommand extends AbsCommand {

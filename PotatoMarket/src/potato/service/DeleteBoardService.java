@@ -3,7 +3,6 @@ package potato.service;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import potato.domain.Board;
 import potato.dao.BoardDao;
 import potato.util.ConnectionProvider;
 

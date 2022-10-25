@@ -14,9 +14,6 @@ public class UpdateBoardController implements IController {
 
 	public boolean process() {
 
-		int writedate = 0;
-		boolean salestatus = true;
-
 		System.out.println("게시글 수정이 시작됩니다.");
 
 		System.out.println("수정할 게시글 번호를 입력해주세요. >> ");

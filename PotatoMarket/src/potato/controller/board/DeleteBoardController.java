@@ -2,7 +2,6 @@ package potato.controller.board;
 
 import potato.controller.IController;
 import potato.dao.BoardDao;
-import potato.domain.Board;
 import potato.service.DeleteBoardService;
 import potato.service.PrintBoardService;
 import potato.util.InputString;

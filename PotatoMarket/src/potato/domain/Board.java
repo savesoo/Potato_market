@@ -1,5 +1,7 @@
 package potato.domain;
 
+import potato.util.CategoryData;
+
 public class Board {
 	
 	// DTO : 데이터 전송 객체, 계층간 상호작용 도와줌 
@@ -97,8 +99,8 @@ public class Board {
 	@Override
 	public String toString() {
 		return "================================================================= \n [게시글 번호] "
-				+ boardid + "\n [ 카테고리 ] " + category + "\n [ 판매자 ] " + userid + "\n [ 상품명 ] " + product
-				+ " [ 판매금액 ] " + saleprice + " [ 판매상태 ] " + salestatus + " [거래 희망지역] " + tradeloc + "\n [ 작성일시 ] "
+				+ boardid + "\n [ 카테고리 ] " + CategoryData.names.get(category) + "\n [ 판매자 ] " + userid + "\n [ 상품명 ] " + product
+				+ " [ 판매금액 ] " + saleprice + " [ 판매상태 ] " + CategoryData.isSaleString(salestatus) + " [거래 희망지역] " + tradeloc + "\n [ 작성일시 ] "
 				+ writedate ;
 	}
 	

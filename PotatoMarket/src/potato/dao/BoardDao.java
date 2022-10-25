@@ -110,7 +110,7 @@ public class BoardDao {
 		try {
 			stmt = conn.createStatement();
 
-			String sql = "SELECT * FROM potato_board"; // 쿼리문 문자열로 변환
+			String sql = "SELECT * FROM potato_board WHERE salestatus=1"; // 현재 판매중인 게시글만 표시
 			rs = stmt.executeQuery(sql); // ResultSet 객체 반환
 
 			while (rs.next()) { // 다음으로 넘어가면 행 추가해주기

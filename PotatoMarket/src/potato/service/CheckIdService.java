@@ -19,7 +19,7 @@ public class CheckIdService {
 		try {
 			conn = ConnectionProvider.getConnection();
 			while (chk) {
-				System.out.print("아이디를 설정해주세요 >> ");
+				System.out.print("1. 아이디를 설정해주세요 >> ");
 				userid = InputString.inputDefaultString();
 				chk = dao.chkId(conn, userid);
 			}

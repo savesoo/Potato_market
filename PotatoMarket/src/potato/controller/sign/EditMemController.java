@@ -18,7 +18,7 @@ public class EditMemController implements IController {
 			System.out.println();
 			System.out.println("회원 정보를 수정합니다.");
 			System.out.println();
-			System.out.print("비밀번호를 수정해주세요 >> ");
+			System.out.print("1. 비밀번호를 수정해주세요 >> ");
 			String password = InputString.inputDefaultString();
 
 			try {
@@ -28,13 +28,14 @@ public class EditMemController implements IController {
 				return false;
 			}
 
-			System.out.print("거주지역을 수정해주세요 >> ");
+			System.out.print("2. 거주지역을 수정해주세요 >> ");
 			String loc = InputString.inputDefaultString();
-			System.out.print("닉네임을 수정해주세요 >> ");
+			System.out.print("3. 닉네임을 수정해주세요 >> ");
 			String nickname = InputString.inputDefaultString();
 
 			UserData userdata = new UserData(password, loc, nickname);
 			if (service.editMem(userdata)) {
+				System.out.println();
 				System.out.println("수정이 완료되었습니다!");
 				System.out.println();
 				result = true;

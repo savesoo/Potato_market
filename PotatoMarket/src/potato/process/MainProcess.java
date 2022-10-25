@@ -113,12 +113,12 @@ public class MainProcess {
 			try {
 				inputMenu = InputString.inputInt();
 				
-				// 여기서 로그인 or 회원가입 처리 하도록 해야 합니다.
 				if(command.command.get(inputMenu).process() && inputMenu == 1) {
 					//로그인 성공이니까 멈춰야함
 					System.out.println("로그인 성공");
 					break;
 				}
+				
 			} catch(Exception e) {
 				System.out.println("작업에 오류가 발생하였습니다. 다시 시도해주세요.");
 				continue;

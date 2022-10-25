@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import potato.dao.ProcessingDao;
-import potato.domain.ProcessingData;
+import potato.domain.Board;
 import potato.util.ConnectionProvider;
 
 public class ProcessingService {
@@ -15,14 +15,14 @@ public class ProcessingService {
 		this.dao = dao;
 	}
 
-	public int processing(ProcessingData processing) {
+	public int processing(Board board) {
 
 		int result = 0;
 		Connection conn = null;
 
 		try {
 			conn = ConnectionProvider.getConnection();
-			result = dao.processing(conn, processing);
+			result = dao.processing(conn, board);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

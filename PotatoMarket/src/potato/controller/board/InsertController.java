@@ -16,7 +16,6 @@ public class InsertController implements IController {
 
 		int boardid = 0;
 		String userid = Session.getInstance().getLoginData().getId();
-		int writedate = 0;
 		boolean salestatus = true;
 
 		System.out.println("판매글 입력을 시작합니다.");
@@ -32,10 +31,9 @@ public class InsertController implements IController {
 
 		System.out.println("거래지역 >> /n (ex.서울시=>서울, 영양군=>영양)");
 		String tradeloc = InputString.inputDefaultString();
-
-		Board board = new Board(boardid, userid, category, product, saleprice, salestatus, writedate, tradeloc);
-		int result = service.insert(board);
-
+		
+		int result = service.insert(new Board(boardid, userid, category, product, saleprice, salestatus, null, tradeloc));
+		
 		if (result > 0) {
 			System.out.println("입력되었습니다.");
 		} else {

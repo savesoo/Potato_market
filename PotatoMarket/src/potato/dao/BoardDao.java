@@ -60,6 +60,7 @@ public class BoardDao {
 			pstmt.setString(6, Session.getInstance().getLoginData().getId()); // id 불러오기
 
 			result = pstmt.executeUpdate();
+			
 		} finally {
 			if (pstmt != null) {
 				pstmt.close();
@@ -134,7 +135,7 @@ public class BoardDao {
 	// 행 단위로 데이터 입력해주는 메소드
 	private Board rowToBoard(ResultSet rs) throws SQLException {
 		return new Board(rs.getInt("boardid"), rs.getString("userid"), rs.getInt("category"), rs.getString("product"),
-				rs.getInt("saleprice"), rs.getBoolean("salestatus"), rs.getInt("writedate"), rs.getString("tradeloc"));
+				rs.getInt("saleprice"), rs.getBoolean("salestatus"), rs.getString("writedate"), rs.getString("tradeloc"));
 	}
 
 	
@@ -181,7 +182,7 @@ public class BoardDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from potato_board where product like '%?%'";
+		String sql = "SELECT * FROM potato_board WHERE product LIKE concat('%',?,'%')";
 		// 입력한 상품명을 키워드로 검색 
 		
 		try {

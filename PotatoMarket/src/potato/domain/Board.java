@@ -10,11 +10,11 @@ public class Board {
 	private String product;
 	private int saleprice;
 	private boolean salestatus;
-	private int writedate;
+	private String writedate;
 	private String tradeloc;
 	
 	public Board(int boardid, String userid, int category, String product, int saleprice, boolean salestatus,
-			int writedate, String tradeloc) {
+			String writedate, String tradeloc) {
 		super();
 		this.boardid = boardid;
 		this.userid = userid;
@@ -62,11 +62,11 @@ public class Board {
 		this.product = product;
 	}
 
-	public int getWritedate() {
+	public String getWritedate() {
 		return writedate;
 	}
 
-	public void setWritedate(int writedate) {
+	public void setWritedate(String writedate) {
 		this.writedate = writedate;
 	}
 
@@ -96,8 +96,8 @@ public class Board {
 
 	@Override
 	public String toString() {
-		return "Board [게시글 번호=" + boardid + ", 판매자=" + userid + ", 카테고리=" + category + ", 상품명=" + product
-				+ ", 판매금액=" + saleprice + ", 판매상태=" + salestatus + ", 작성일시=" + writedate + ", 거래 희망지역="
+		return "판매글 [게시글 번호 | " + boardid + "| 판매자 | " + userid + "| 카테고리 | " + category + "| 상품명 | " + product
+				+ "| 판매금액 | " + saleprice + "| 판매상태 | " + salestatus + "| 작성일시 | " + writedate + "| 거래 희망지역 | "
 				+ tradeloc + "]";
 	}
 	

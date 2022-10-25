@@ -13,7 +13,6 @@ import potato.domain.Session;
 
 public class BoardDao {
 
-	
 	// 게시물 작성
 	public int insertBoard(Connection conn, Board board) throws SQLException {
 
@@ -60,7 +59,7 @@ public class BoardDao {
 			pstmt.setString(6, Session.getInstance().getLoginData().getId()); // id 불러오기
 
 			result = pstmt.executeUpdate();
-			
+
 		} finally {
 			if (pstmt != null) {
 				pstmt.close();
@@ -99,9 +98,10 @@ public class BoardDao {
 	
 	
 	
+	
 // ------------------------------------------------------------------------------------
 
-	// DB에 저장된 판매 게시글 불러오기
+	// DB에 저장된 전체 판매 게시글 불러오기
 	public List<Board> selectBoard(Connection conn) throws SQLException { // throws 처리했으므로 catch문 삭제
 
 		List<Board> list = new ArrayList<>();
@@ -135,27 +135,27 @@ public class BoardDao {
 	// 행 단위로 데이터 입력해주는 메소드
 	private Board rowToBoard(ResultSet rs) throws SQLException {
 		return new Board(rs.getInt("boardid"), rs.getString("userid"), rs.getInt("category"), rs.getString("product"),
-				rs.getInt("saleprice"), rs.getBoolean("salestatus"), rs.getString("writedate"), rs.getString("tradeloc"));
+				rs.getInt("saleprice"), rs.getBoolean("salestatus"), rs.getString("writedate"),
+				rs.getString("tradeloc"));
 	}
 
-	
-	// 판매 내역 조회. 단 판매상태는 구분 X
+	// 내 판매글(=내역) 조회. 단 판매상태는 구분 X
 	public List<Board> showsellHistory(Connection conn) throws SQLException {
 
 		List<Board> list = new ArrayList<>();
 		String userid = Session.getInstance().getLoginData().getId();
-		
+
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		String sql = "SELECT * FROM potato_board WHERE userid=?";
 		// userid가 일치하며 판매중/판매완료 둘 다 표시
 
 		try {
-			
+
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userid);
-			
+
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -173,39 +173,72 @@ public class BoardDao {
 
 		return list;
 	}
-	
+
 	
 	// 판매상품으로 검색
 	public List<Board> searchBoardByProduct(Connection conn, String product) throws SQLException {
-		
+
 		List<Board> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		String sql = "SELECT * FROM potato_board WHERE product LIKE concat('%',?,'%')";
-		// 입력한 상품명을 키워드로 검색 
-		
+		// 입력한 상품명을 키워드로 검색
+
 		try {
-			
+
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, product);
-			
+
 			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				list.add(rowToBoard(rs));
 			}
-			
+
 		} finally {
-			if(pstmt!=null) {
+			if (pstmt != null) {
 				pstmt.close();
 			}
-			if(rs!=null) {
+			if (rs != null) {
 				rs.close();
 			}
 		}
 
 		return list;
+	}
+
+	
+	// 입력받은 boardid와 내 userid가 일치하는 행을 출력
+	public Board verifyID(Connection conn, int boardid) throws SQLException {
+
+		Board board = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = "select * from potato_board where boardid=? and userid=?"; // boardid 랑 내 userid로 select 받아옴 -> service call
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardid);
+			pstmt.setString(2, Session.getInstance().getLoginData().getId());
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				board = rowToBoard(rs);
+			}
+
+		} finally {
+			if (pstmt != null) {
+				pstmt.close();
+			}
+			if (rs != null) {
+				rs.close();
+			}
+		}
+
+		return board;
 	}
 
 }

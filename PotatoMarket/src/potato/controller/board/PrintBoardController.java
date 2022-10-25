@@ -40,13 +40,12 @@ public class PrintBoardController implements IController {
 			System.out.println("3. 상품 구매하기");
 			System.out.println("4. 판매 게시글 수정");
 			System.out.println("5. 판매 게시글 삭제");
-			System.out.println("6. 내 판매 내역 확인");
-			System.out.println("7. 이전 화면으로 돌아가기");
+			System.out.println("6. 이전 화면으로 돌아가기");
 			System.out.println("======================");
 			System.out.println();
 
 			inputmenu = InputString.inputInt();
-			if(inputmenu==7) {
+			if(inputmenu==6) {
 				return false;
 			}
 			command.command.get(inputmenu).process();

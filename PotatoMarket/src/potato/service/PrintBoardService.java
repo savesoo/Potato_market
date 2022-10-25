@@ -41,7 +41,40 @@ public class PrintBoardService {
 
 		return list;
 	}
+
 	
-	
+// -------------------------------
+
+	// boardid 랑 내 userid 일치하면 출력, 아니면 false
+	public boolean verifyID(int boardid) {
+
+		Board board = null;
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			conn = ConnectionProvider.getConnection();
+			board = dao.verifyID(conn, boardid);
+			
+			if(board!=null) {
+				result = true;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return result;
+
+	}
 
 }

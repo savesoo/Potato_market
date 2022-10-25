@@ -7,15 +7,15 @@ import potato.domain.Board;
 import potato.util.ConnectionProvider;
 import potato.dao.BoardDao;
 
-public class InsertService {
+public class InsertBoardService {
 
 BoardDao dao;
 	
-	public InsertService(BoardDao dao) {
+	public InsertBoardService(BoardDao dao) {
 		this.dao = dao;
 	}
 	
-	public int insert(Board board) {
+	public int insertBoard(Board board) {
 		
 		int result = 0;
 		Connection conn = null;
@@ -23,7 +23,7 @@ BoardDao dao;
 		try {
 			conn= ConnectionProvider.getConnection();
 			
-			result = dao.insert(conn, board);
+			result = dao.insertBoard(conn, board);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

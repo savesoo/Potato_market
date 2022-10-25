@@ -9,15 +9,15 @@ import potato.domain.Board;
 import potato.util.ConnectionProvider;
 
 // 상품명으로 검색 처리
-public class SearchService {
+public class ProductSearchService {
 
 	BoardDao dao;
 
-	public SearchService(BoardDao dao) {
+	public ProductSearchService(BoardDao dao) {
 		this.dao = dao;
 	}
 
-	public List<Board> searchByProduct(String product) {
+	public List<Board> productSearch(String product) {
 
 		List<Board> list = null;
 		Connection conn = null;
@@ -25,7 +25,7 @@ public class SearchService {
 		try {
 			
 			conn = ConnectionProvider.getConnection();
-			list = dao.searchProduct(conn, product);
+			list = dao.searchBoardByProduct(conn, product);
 
 		} catch (SQLException e) {
 			e.printStackTrace();

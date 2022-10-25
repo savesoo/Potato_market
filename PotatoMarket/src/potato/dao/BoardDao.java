@@ -15,7 +15,7 @@ public class BoardDao {
 
 	
 	// 게시물 작성
-	public int insert(Connection conn, Board board) throws SQLException {
+	public int insertBoard(Connection conn, Board board) throws SQLException {
 
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -43,7 +43,7 @@ public class BoardDao {
 
 	
 	// 게시물 수정
-	public int update(Connection conn, Board board) throws SQLException {
+	public int updateBoard(Connection conn, Board board) throws SQLException {
 
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -72,7 +72,7 @@ public class BoardDao {
 
 	
 	// 게시물 삭제
-	public int delete(Connection conn, Board board) throws SQLException {
+	public int deleteBoard(Connection conn, Board board) throws SQLException {
 
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -102,7 +102,7 @@ public class BoardDao {
 // ------------------------------------------------------------------------------------
 
 	// DB에 저장된 판매 게시글 불러오기
-	public List<Board> select(Connection conn) throws SQLException { // throws 처리했으므로 catch문 삭제
+	public List<Board> selectBoard(Connection conn) throws SQLException { // throws 처리했으므로 catch문 삭제
 
 		List<Board> list = new ArrayList<>();
 		Statement stmt = null;
@@ -176,7 +176,7 @@ public class BoardDao {
 	
 	
 	// 판매상품으로 검색
-	public List<Board> searchProduct(Connection conn, String product) throws SQLException {
+	public List<Board> searchBoardByProduct(Connection conn, String product) throws SQLException {
 		
 		List<Board> list = new ArrayList<>();
 		PreparedStatement pstmt = null;

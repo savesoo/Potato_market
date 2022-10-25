@@ -8,24 +8,24 @@ import potato.dao.BoardDao;
 import potato.domain.Board;
 import potato.util.ConnectionProvider;
 
-public class PrintService {
+public class PrintBoardService {
 
 	// 컨트롤러에서 요청을 받아와 게시물 리스트 출력 처리하는 클래스
 	BoardDao dao;
 
-	public PrintService(BoardDao dao) {
+	public PrintBoardService(BoardDao dao) {
 		this.dao = dao;
 	}
 
 	// 리스트 출력
-	public List<Board> print() {
+	public List<Board> allBoardPrint() {
 
 		List<Board> list = null;
 		Connection conn = null;
 
 		try {
 			conn = ConnectionProvider.getConnection(); // 커넥션으로 DB 연결
-			list = dao.select(conn); // 저장된 게시물 dao에서 불러오는 메소드 사용
+			list = dao.selectBoard(conn); // 저장된 게시물 dao에서 불러오는 메소드 사용
 
 		} catch (SQLException e) {
 
@@ -41,5 +41,7 @@ public class PrintService {
 
 		return list;
 	}
+	
+	
 
 }

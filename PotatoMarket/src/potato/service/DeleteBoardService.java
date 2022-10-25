@@ -7,22 +7,22 @@ import potato.domain.Board;
 import potato.dao.BoardDao;
 import potato.util.ConnectionProvider;
 
-public class DeleteService {
+public class DeleteBoardService {
 
 	BoardDao dao;
 
-	public DeleteService(BoardDao dao) {
+	public DeleteBoardService(BoardDao dao) {
 		this.dao = dao;
 	}
 
-	public int delete(Board board) {
+	public int deleteBoard(Board board) {
 		int result = 0;
 		Connection conn = null;
 
 		try {
 			conn = ConnectionProvider.getConnection();
 
-			result = dao.delete(conn, board);
+			result = dao.deleteBoard(conn, board);
 
 		} catch (SQLException e) {
 			e.printStackTrace();

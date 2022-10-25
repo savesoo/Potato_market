@@ -5,13 +5,13 @@ import java.util.List;
 import potato.controller.IController;
 import potato.dao.BoardDao;
 import potato.domain.Board;
-import potato.service.SearchService;
+import potato.service.ProductSearchService;
 import potato.util.InputString;
 
 // 서비스 클래스에 상품명으로 검색 요청
-public class SearchController implements IController {
+public class ProductSearchController implements IController {
 	
-	SearchService service = new SearchService(new BoardDao());
+	ProductSearchService service = new ProductSearchService(new BoardDao());
 
 	@Override
 	public boolean process() {
@@ -24,7 +24,7 @@ public class SearchController implements IController {
 			System.out.println("찾으실 상품명을 입력해주세요. >>");
 			String product = InputString.inputDefaultString(); // 입력
 			
-			List<Board> list = service.searchByProduct(product);
+			List<Board> list = service.productSearch(product);
 			
 			System.out.println("---------------검색 결과---------------");
 			if(list!=null) {

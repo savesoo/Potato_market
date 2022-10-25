@@ -3,12 +3,12 @@ package potato.controller.board;
 import potato.controller.IController;
 import potato.dao.BoardDao;
 import potato.domain.Board;
-import potato.service.DeleteService;
+import potato.service.DeleteBoardService;
 import potato.util.InputString;
 
-public class DeleteController implements IController {
+public class DeleteBoardController implements IController {
 
-	DeleteService service = new DeleteService(new BoardDao());
+	DeleteBoardService service = new DeleteBoardService(new BoardDao());
 
 	@Override
 	public boolean process() {
@@ -20,7 +20,7 @@ public class DeleteController implements IController {
 		System.out.println("삭제할 게시글 번호 >>");
 		int boardid = InputString.inputInt();
 
-		int result = service.delete(board);
+		int result = service.deleteBoard(board);
 
 		if (result > 0) {
 			System.out.println("삭제되었습니다.");

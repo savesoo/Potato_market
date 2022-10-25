@@ -7,19 +7,19 @@ import potato.dao.BoardDao;
 import potato.domain.Board;
 import potato.process.command.AbsCommand;
 import potato.process.command.BoardCommand;
-import potato.service.PrintService;
+import potato.service.PrintBoardService;
 import potato.util.InputString;
 
 // 게시물 보여줄 것을 서비스에 요청하는 서비스 클래스
 // List<Board> 출력
-public class PrintController implements IController {
+public class PrintBoardController implements IController {
 
-	PrintService service = new PrintService(new BoardDao());
+	PrintBoardService service = new PrintBoardService(new BoardDao());
 
 	@Override
 	public boolean process() {
 
-		List<Board> list = service.print();
+		List<Board> list = service.allBoardPrint();
 
 		if (list != null && !list.isEmpty()) {
 			for (Board b : list) {

@@ -8,11 +8,11 @@ import potato.domain.Board;
 import potato.util.ConnectionProvider;
 
 // 게시글 수정 실행 서비스
-public class UpdateService {
+public class UpdateBoardService {
 	
 	BoardDao dao;
 	
-	public UpdateService(BoardDao dao) {
+	public UpdateBoardService(BoardDao dao) {
 		this.dao = dao;
 	}
 	
@@ -22,7 +22,7 @@ public class UpdateService {
 		
 		try {
 			conn = ConnectionProvider.getConnection();
-			result = dao.update(conn, board);
+			result = dao.updateBoard(conn, board);
 			
 			
 		} catch (SQLException e) {

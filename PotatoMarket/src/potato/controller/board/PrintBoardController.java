@@ -10,7 +10,7 @@ import potato.process.command.BoardCommand;
 import potato.service.PrintBoardService;
 import potato.util.InputString;
 
-// 게시물 보여줄 것을 서비스에 요청하는 서비스 클래스
+// 게시물 리스트 출력을 서비스에 요청하는 서비스 클래스
 // List<Board> 출력
 public class PrintBoardController implements IController {
 

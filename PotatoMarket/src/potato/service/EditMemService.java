@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import potato.dao.UserDao;
-import potato.domain.Session;
 import potato.domain.UserData;
 import potato.util.ConnectionProvider;
 

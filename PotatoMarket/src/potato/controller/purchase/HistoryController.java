@@ -1,11 +1,8 @@
 package potato.controller.purchase;
 
-import java.util.Scanner;
-
 import potato.controller.IController;
 import potato.dao.HistoryDao;
 import potato.domain.HistoryData;
-import potato.domain.Session;
 import potato.service.HistoryService;
 import potato.util.InputString;
 

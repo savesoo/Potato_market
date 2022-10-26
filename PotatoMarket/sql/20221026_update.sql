@@ -1,0 +1,2 @@
+ALTER TABLE `project`.`potato_trade` 
+ADD COLUMN `orderdate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `userid`;

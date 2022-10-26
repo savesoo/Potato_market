@@ -28,7 +28,7 @@ public class BoardInsertController implements IController {
 		String product = InputString.inputDefaultString();
 
 		System.out.println("판매금액 >> ");
-		int saleprice = InputString.inputInt();
+		int saleprice = InputString.inputPositiveInt();
 
 		System.out.println("거래지역 >> \n (ex.서울시=>서울, 영양군=>영양)");
 		String tradeloc = InputString.inputDefaultString();

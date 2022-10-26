@@ -24,6 +24,23 @@ public class InputString {
 		}
 		return result;
 	}
+
+	public static int inputPositiveInt() {
+		int result = -1;
+		while(true) {
+			try {
+				result = Integer.parseInt(scan.nextLine());
+				if(result > 0)
+					break;
+				else
+					System.out.println("0 이상부터 입력 가능합니다.");
+			} catch(Exception e) {
+				System.out.println("입력 형식이 잘못 되었습니다. 숫자 형식으로 다시 입력해주세요.");
+				continue;
+			}
+		}
+		return result;
+	}
 	
 	public static String inputDefaultString() {
 		String result = null;

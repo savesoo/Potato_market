@@ -42,7 +42,6 @@ public class BoardListService {
 		return list;
 	}
 
-	
 // -----------------------------------------------------
 
 	// 수정, 삭제시 사용할 권한 확인 기능
@@ -56,14 +55,14 @@ public class BoardListService {
 		try {
 			conn = ConnectionProvider.getConnection();
 			board = dao.verifyID(conn, boardid);
-			
-			if(board!=null) {
+
+			if (board != null) {
 				result = true;
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
+
 		} finally {
 			if (conn != null) {
 				try {

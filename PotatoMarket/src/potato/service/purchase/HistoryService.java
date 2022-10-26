@@ -2,33 +2,40 @@ package potato.service.purchase;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
-import potato.dao.HistoryDao;
-import potato.domain.HistoryData;
+import potato.dao.PurchaseDao;
+import potato.domain.Board;
 import potato.util.ConnectionProvider;
 
 public class HistoryService {
 
-	HistoryDao dao;
+	PurchaseDao dao;
 
-	public HistoryService(HistoryDao dao) {
+	public HistoryService(PurchaseDao dao) {
 		this.dao = dao;
 	}
 
-	public int history(HistoryData history) {
+	public List<Board>purchaseHistory() {
 
-		int result = 0;
+		List<Board> list = null;
 		Connection conn = null;
-
 		try {
 			conn = ConnectionProvider.getConnection();
-			result = dao.history(conn, history);
-			
+			list = dao.purchaseHistory(conn);
+
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 		}
 
-		return result;
+		return list;
 
 	}
 

@@ -34,19 +34,8 @@ public class ProcessingController implements IController {
 
 		
 		
-
-		Board board = null;
-		try {
-			board = service.processing(new Board());
-			catch(SQLException e) {
-				e.printStackTrace();
-				
-			}
-		
-		
-		
-		}
 		return false;
+		
 	} 
 
 }

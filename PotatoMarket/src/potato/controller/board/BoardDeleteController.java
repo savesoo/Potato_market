@@ -2,14 +2,14 @@ package potato.controller.board;
 
 import potato.controller.IController;
 import potato.dao.BoardDao;
-import potato.service.board.DeleteBoardService;
-import potato.service.board.PrintBoardService;
+import potato.service.board.BoardDeleteService;
+import potato.service.board.BoardListService;
 import potato.util.InputString;
 
-public class DeleteBoardController implements IController {
+public class BoardDeleteController implements IController {
 
-	DeleteBoardService service = new DeleteBoardService(new BoardDao());
-	PrintBoardService ps = new PrintBoardService(new BoardDao());
+	BoardDeleteService service = new BoardDeleteService(new BoardDao());
+	BoardListService ps = new BoardListService(new BoardDao());
 
 	@Override
 	public boolean process() {

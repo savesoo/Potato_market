@@ -4,12 +4,12 @@ import potato.controller.IController;
 import potato.dao.BoardDao;
 import potato.domain.Board;
 import potato.domain.Session;
-import potato.service.board.InsertBoardService;
+import potato.service.board.BoardInsertService;
 import potato.util.InputString;
 
-public class InsertBoardController implements IController {
+public class BoardInsertController implements IController {
 
-	InsertBoardService service = new InsertBoardService(new BoardDao());
+	BoardInsertService service = new BoardInsertService(new BoardDao());
 
 	@Override
 	public boolean process() {

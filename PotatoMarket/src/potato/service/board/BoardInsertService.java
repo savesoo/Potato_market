@@ -7,11 +7,11 @@ import potato.domain.Board;
 import potato.util.ConnectionProvider;
 import potato.dao.BoardDao;
 
-public class InsertBoardService {
+public class BoardInsertService {
 
 BoardDao dao;
 	
-	public InsertBoardService(BoardDao dao) {
+	public BoardInsertService(BoardDao dao) {
 		this.dao = dao;
 	}
 	

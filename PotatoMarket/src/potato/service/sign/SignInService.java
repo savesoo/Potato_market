@@ -7,7 +7,7 @@ import potato.dao.UserDao;
 import potato.domain.LoginData;
 import potato.util.ConnectionProvider;
 
-public class UserService {
+public class SignInService {
 	UserDao dao = new UserDao();
 
 	public boolean signIn(LoginData loginData) {

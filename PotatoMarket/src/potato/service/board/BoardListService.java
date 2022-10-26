@@ -9,11 +9,11 @@ import potato.domain.Board;
 import potato.util.ConnectionProvider;
 
 // 컨트롤러에서 요청을 받아와 게시물 리스트 출력 처리하는 클래스
-public class PrintBoardService {
+public class BoardListService {
 
 	BoardDao dao;
 
-	public PrintBoardService(BoardDao dao) {
+	public BoardListService(BoardDao dao) {
 		this.dao = dao;
 	}
 

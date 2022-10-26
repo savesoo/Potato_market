@@ -14,7 +14,7 @@ import potato.domain.Session;
 import potato.process.command.AbsCommand;
 import potato.process.command.LoginCommand;
 import potato.process.command.MainCommand;
-import potato.service.sign.UserService;
+import potato.service.sign.SignInService;
 import potato.util.ConnectionProvider;
 import potato.util.InputString;
 
@@ -89,7 +89,7 @@ public class MainProcess {
 			long now = System.currentTimeMillis();
 			long lastLoginTime = Session.getInstance().getLoginTime().getTime();
 			if((now - lastLoginTime < (24 * 60 * 60 * 1000))) {
-				UserService service = new UserService();
+				SignInService service = new SignInService();
 				// 로그인 데이터 있을 경우 db에 데이터 비교해서 정상적인 로그인 처리 필요.
 				if(service.signIn(Session.getInstance().getLoginData())) {
 					System.out.println("자동 로그인 성공!");

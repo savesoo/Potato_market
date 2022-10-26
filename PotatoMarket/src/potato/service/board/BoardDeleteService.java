@@ -6,11 +6,11 @@ import java.sql.SQLException;
 import potato.dao.BoardDao;
 import potato.util.ConnectionProvider;
 
-public class DeleteBoardService {
+public class BoardDeleteService {
 
 	BoardDao dao;
 
-	public DeleteBoardService(BoardDao dao) {
+	public BoardDeleteService(BoardDao dao) {
 		this.dao = dao;
 	}
 

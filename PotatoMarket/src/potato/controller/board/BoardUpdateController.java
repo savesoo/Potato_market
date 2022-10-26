@@ -1,16 +1,16 @@
 package potato.controller.board;
 
 import potato.domain.Board;
-import potato.service.board.PrintBoardService;
-import potato.service.board.UpdateBoardService;
+import potato.service.board.BoardListService;
+import potato.service.board.BoardUpdateService;
 import potato.util.InputString;
 import potato.controller.IController;
 import potato.dao.BoardDao;
 
-public class UpdateBoardController implements IController {
+public class BoardUpdateController implements IController {
 
-	UpdateBoardService service = new UpdateBoardService(new BoardDao());
-	PrintBoardService ps = new PrintBoardService(new BoardDao());
+	BoardUpdateService service = new BoardUpdateService(new BoardDao());
+	BoardListService ps = new BoardListService(new BoardDao());
 
 	public boolean process() {
 

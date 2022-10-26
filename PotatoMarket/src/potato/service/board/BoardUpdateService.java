@@ -8,11 +8,11 @@ import potato.domain.Board;
 import potato.util.ConnectionProvider;
 
 // 게시글 수정 실행 서비스
-public class UpdateBoardService {
+public class BoardUpdateService {
 	
 	BoardDao dao;
 	
-	public UpdateBoardService(BoardDao dao) {
+	public BoardUpdateService(BoardDao dao) {
 		this.dao = dao;
 	}
 	

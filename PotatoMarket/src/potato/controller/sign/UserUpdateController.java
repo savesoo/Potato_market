@@ -2,13 +2,13 @@ package potato.controller.sign;
 
 import potato.controller.IController;
 import potato.domain.UserData;
-import potato.service.sign.EditMemService;
+import potato.service.sign.UserUpdateService;
 import potato.util.EncryptString;
 import potato.util.InputString;
 
-public class EditMemController implements IController {
+public class UserUpdateController implements IController {
 
-	private EditMemService service = new EditMemService();
+	private UserUpdateService service = new UserUpdateService();
 
 	public boolean process() {
 
@@ -25,7 +25,7 @@ public class EditMemController implements IController {
 				System.out.print("1-1. 비밀번호를 수정해주세요 >> ");
 				password = InputString.inputDefaultString();
 				System.out.print("1-2. 한 번 더 입력해주세요 >> ");
-				run = CheckPassword.chkPassword(password);
+				run = PasswordCheckProcess.chkPassword(password);
 
 				try {
 					password = EncryptString.encryptAES256(password);

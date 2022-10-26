@@ -7,7 +7,7 @@ import potato.dao.UserDao;
 import potato.util.ConnectionProvider;
 import potato.util.InputString;
 
-public class CheckIdService {
+public class UserIdCheckService {
 
 	UserDao dao = new UserDao();
 

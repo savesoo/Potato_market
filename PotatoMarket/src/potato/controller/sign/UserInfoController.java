@@ -2,11 +2,11 @@ package potato.controller.sign;
 
 import potato.controller.IController;
 import potato.domain.UserData;
-import potato.service.sign.ViewInfoService;
+import potato.service.sign.UserInfoService;
 
-public class ViewInfoController implements IController {
+public class UserInfoController implements IController {
 
-	ViewInfoService service = new ViewInfoService();
+	UserInfoService service = new UserInfoService();
 
 	@Override
 	public boolean process() {

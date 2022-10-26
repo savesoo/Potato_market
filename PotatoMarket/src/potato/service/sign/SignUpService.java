@@ -7,7 +7,7 @@ import potato.dao.UserDao;
 import potato.domain.UserData;
 import potato.util.ConnectionProvider;
 
-public class InsertMemService {
+public class SignUpService {
 
 	UserDao dao = new UserDao();
 	

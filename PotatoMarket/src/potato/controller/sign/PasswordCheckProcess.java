@@ -2,7 +2,7 @@ package potato.controller.sign;
 
 import potato.util.InputString;
 
-public class CheckPassword {
+public class PasswordCheckProcess {
 	// 확인용 비밀번호 체크
 	public static boolean chkPassword(String password) {
 		boolean result = true;

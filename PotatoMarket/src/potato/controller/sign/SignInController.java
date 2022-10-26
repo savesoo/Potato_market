@@ -3,13 +3,13 @@ package potato.controller.sign;
 import potato.controller.IController;
 import potato.domain.LoginData;
 import potato.domain.Session;
-import potato.service.sign.UserService;
+import potato.service.sign.SignInService;
 import potato.util.EncryptString;
 import potato.util.InputString;
 
 public class SignInController implements IController {
 	
-	private UserService service = new UserService();
+	private SignInService service = new SignInService();
 
 	@Override
 	public boolean process() {

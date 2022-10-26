@@ -2,15 +2,15 @@ package potato.controller.sign;
 
 import potato.controller.IController;
 import potato.domain.UserData;
-import potato.service.sign.CheckIdService;
-import potato.service.sign.InsertMemService;
+import potato.service.sign.UserIdCheckService;
+import potato.service.sign.SignUpService;
 import potato.util.EncryptString;
 import potato.util.InputString;
 
 public class SignUpController implements IController {
 
-	private InsertMemService service = new InsertMemService();
-	private CheckIdService service2 = new CheckIdService();
+	private SignUpService service = new SignUpService();
+	private UserIdCheckService service2 = new UserIdCheckService();
 
 	@Override
 	public boolean process() {
@@ -30,7 +30,7 @@ public class SignUpController implements IController {
 				System.out.print("2-1. 비밀번호를 첫 설정해주세요 >>");
 				password = InputString.inputDefaultString();
 				System.out.print("2-2. 비밀번호를 한 번 더 입력하세요 >> ");
-				run = CheckPassword.chkPassword(password);
+				run = PasswordCheckProcess.chkPassword(password);
 
 				try {
 					password = EncryptString.encryptAES256(password);

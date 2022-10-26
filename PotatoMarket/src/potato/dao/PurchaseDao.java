@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import potato.domain.Board;
@@ -26,8 +25,6 @@ public class PurchaseDao {
 
 			rs = pstmt.executeQuery();
 
-			while (rs.next()) {
-			}
 		} finally {
 			if (pstmt != null)
 				pstmt.close();
@@ -39,36 +36,7 @@ public class PurchaseDao {
 
 	}
 
-	public List<Board> purchaseprocessing(Connection conn, int boardid) throws SQLException {
-		List<Board> list = new ArrayList<>();
-		String userid = Session.getInstance().getId();
-
-		ResultSet rs = null;
-		PreparedStatement pstmt = null;
-		String sql = "select * from potato_board where boardid = ? and userid != ? and salestatus = 1";
-
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, userid);
-			pstmt.setInt(2, boardid);
-
-			rs = pstmt.executeQuery();
-
-			// rs.next();
-			// -> true: 구매 가능한 상태이므로, 관련 처리를 해줍니다
-			// -> false: 구매 불가한 상태이므로, 관련 처리를 해줍니다
-
-		} finally {
-
-			if (pstmt != null) {
-				pstmt.close();
-				if (rs != null)
-					rs.close();
-			}
-		}
-		return list;
-	}
-
+	
 	// 구매처리 dao
 		public int buyProduct(Connection conn, int boardid) throws SQLException {
 

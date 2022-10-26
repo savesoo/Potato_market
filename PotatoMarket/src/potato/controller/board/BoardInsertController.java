@@ -16,7 +16,7 @@ public class BoardInsertController implements IController {
 	public boolean process() {
 
 		int boardid = 0;
-		String userid = Session.getInstance().getLoginData().getId();
+		String userid = Session.getInstance().getId();
 		boolean salestatus = true;
 
 		System.out.println("판매글 입력을 시작합니다.");
@@ -41,7 +41,7 @@ public class BoardInsertController implements IController {
 			System.out.println("=============================================");
 			System.out.println("아이디\t 카테고리\t판매물품\t판매금액\t거래지역");
 			System.out.println("=============================================");
-			System.out.println(userid+"\t" +CategoryData.names.get(category) + "\t"+product + "\t"+saleprice+ "\t"+tradeloc);
+			System.out.println(userid+"\t" +CategoryData.categoryNames.get(category) + "\t"+product + "\t"+saleprice+ "\t"+tradeloc);
 			
 			
 		} else {

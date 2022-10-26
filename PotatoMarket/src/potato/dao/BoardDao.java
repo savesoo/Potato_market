@@ -56,7 +56,7 @@ public class BoardDao {
 			pstmt.setInt(3, board.getSaleprice());
 			pstmt.setString(4, board.getTradeloc());
 			pstmt.setInt(5, board.getBoardid());
-			pstmt.setString(6, Session.getInstance().getLoginData().getId()); // id 불러오기
+			pstmt.setString(6, Session.getInstance().getId()); // id 불러오기
 
 			result = pstmt.executeUpdate();
 
@@ -74,7 +74,7 @@ public class BoardDao {
 	public int deleteBoard(Connection conn, int boardid) throws SQLException {
 		
 		int result = 0;
-		String userid = Session.getInstance().getLoginData().getId();
+		String userid = Session.getInstance().getId();
 		PreparedStatement pstmt = null;
 
 		String sql = "delete from potato_board where boardid=? and userid=? and salestatus=1";
@@ -145,7 +145,7 @@ public class BoardDao {
 	public List<Board> showsellHistory(Connection conn) throws SQLException {
 
 		List<Board> list = new ArrayList<>();
-		String userid = Session.getInstance().getLoginData().getId();
+		String userid = Session.getInstance().getId();
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -225,7 +225,7 @@ public class BoardDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, boardid);
-			pstmt.setString(2, Session.getInstance().getLoginData().getId());
+			pstmt.setString(2, Session.getInstance().getId());
 			
 			rs = pstmt.executeQuery();
 			

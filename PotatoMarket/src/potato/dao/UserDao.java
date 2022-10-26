@@ -70,7 +70,7 @@ public class UserDao {
 	
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, Session.getInstance().getLoginData().getId());
+			pstmt.setString(1, Session.getInstance().getId());
 	
 			rs = pstmt.executeQuery();
 	
@@ -105,7 +105,7 @@ public class UserDao {
 			pstmt.setString(1, userData.getPassword());
 			pstmt.setString(2, userData.getLoc());
 			pstmt.setString(3, userData.getNickname());
-			pstmt.setString(4, Session.getInstance().getLoginData().getId());
+			pstmt.setString(4, Session.getInstance().getId());
 			
 			result = pstmt.executeUpdate();
 		} finally {
@@ -124,7 +124,7 @@ public class UserDao {
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, Session.getInstance().getLoginData().getId());
+			pstmt.setString(1, Session.getInstance().getId());
 			
 			result = pstmt.executeUpdate();
 		} finally {

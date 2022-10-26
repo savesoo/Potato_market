@@ -34,8 +34,15 @@ public class HistoryController implements IController {
 		
 		if (result > 0) {
 			System.out.println("입력되었습니다.");
+			System.out.println("=====================================");
+			System.out.println("아이디\t게시글번호\t주문번호");
+			System.out.println(userid+"\t"+boardid+"\t"+orderid+"\t");
+			System.out.println("=====================================");
+			
+		
 		} else {
 			System.out.println("입력 실패");
+		
 		}
 		
 		

@@ -1,5 +1,7 @@
 package potato.controller.purchase;
 
+import java.sql.SQLException;
+
 import potato.controller.IController;
 import potato.dao.ProcessingDao;
 import potato.domain.Board;
@@ -15,10 +17,9 @@ public class ProcessingController implements IController {
 	public boolean process() {
 
 		String userid = Session.getInstance().getLoginData().getId();
-		boolean salestatus = true;
 
 		System.out.println("상품구매");
-
+		
 		System.out.println("카테고리 >> \n()");
 		int category = InputString.inputInt();
 
@@ -31,15 +32,20 @@ public class ProcessingController implements IController {
 		System.out.println("거래지역 >> ");
 		String tradeloc = InputString.inputDefaultString();
 
-		int result = service.processing(new Board());
-
-		if (result > 0) {
-			
-		} else {
-			System.out.println("입력실패");
-		} 
 		
-		return false;
+		
+
+		Board board = null;
+		try {
+			board = sevice.processing(new Board());
+			catch(SQLException e) {
+				e.printStackTrace();
+				
+			}
+		
+		
+		
+		}
 		
 	} 
 

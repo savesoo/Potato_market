@@ -17,11 +17,10 @@ public class ProcessingDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, processing.getUserid());
-			//
-			pstmt.setInt(3, processing.getCategory());
-			pstmt.setString(4, processing.getProduct());
-			pstmt.setString(5, processing.getTradeloc());
-			pstmt.setInt(6, processing.getSaleprice());
+			pstmt.setInt(2, processing.getCategory());
+			pstmt.setString(3, processing.getProduct());
+			pstmt.setString(4, processing.getTradeloc());
+			pstmt.setInt(5, processing.getSaleprice());
 
 			result = pstmt.executeUpdate();
 

@@ -7,16 +7,16 @@ import java.util.Map;
 public class CategoryData {
 	
 	// 카테고리 숫자로 선택, 문자열로 출력
-	public static Map<Integer, String> names ;
+	public static Map<Integer, String> categoryNames ;
 	
 	static {
-		names = new HashMap<>();
-		names.put(1, "생활 용품");
-		names.put(2, "패션/잡화");
-		names.put(3, "전자 제품");
-		names.put(4, "도서");
-		names.put(5, "반려동물 용품");
-		names.put(6, "기타");
+		categoryNames = new HashMap<>();
+		categoryNames.put(1, "생활 용품");
+		categoryNames.put(2, "패션/잡화");
+		categoryNames.put(3, "전자 제품");
+		categoryNames.put(4, "도서");
+		categoryNames.put(5, "반려동물 용품");
+		categoryNames.put(6, "기타");
 	}
 	
 	// 판매 상태 문자열로 표시

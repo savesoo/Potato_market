@@ -26,6 +26,8 @@ public class PurchaseDao {
 
 			rs = pstmt.executeQuery();
 
+			while (rs.next()) {
+			}
 		} finally {
 			if (pstmt != null)
 				pstmt.close();
@@ -38,9 +40,8 @@ public class PurchaseDao {
 	}
 
 	public List<Board> purchaseprocessing(Connection conn, int boardid) throws SQLException {
-
 		List<Board> list = new ArrayList<>();
-		String userid = Session.getInstance().getLoginData().getId();
+		String userid = Session.getInstance().getId();
 
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
@@ -66,7 +67,6 @@ public class PurchaseDao {
 			}
 		}
 		return list;
-
 	}
 
 }

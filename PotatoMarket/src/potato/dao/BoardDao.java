@@ -10,6 +10,7 @@ import java.util.List;
 
 import potato.domain.Board;
 import potato.domain.Session;
+import potato.util.ConvertData;
 
 public class BoardDao {
 
@@ -116,7 +117,7 @@ public class BoardDao {
 			rs = stmt.executeQuery(sql); // ResultSet 객체 반환
 
 			while (rs.next()) { // 다음으로 넘어가면 행 추가해주기
-				list.add(rowToBoard(rs));
+				list.add(ConvertData.rowToBoard(rs));
 			}
 
 		} finally {
@@ -131,15 +132,6 @@ public class BoardDao {
 		return list;
 
 	}
-
-	
-	// 행 단위로 데이터 입력해주는 메소드
-	private Board rowToBoard(ResultSet rs) throws SQLException {
-		return new Board(rs.getInt("boardid"), rs.getString("userid"), rs.getInt("category"), rs.getString("product"),
-				rs.getInt("saleprice"), rs.getBoolean("salestatus"), rs.getString("writedate"),
-				rs.getString("tradeloc"));
-	}
-
 	
 	// 내 판매글(=판매내역) 조회. 단 판매상태는 구분 X
 	public List<Board> showsellHistory(Connection conn) throws SQLException {
@@ -161,7 +153,7 @@ public class BoardDao {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				list.add(rowToBoard(rs));
+				list.add(ConvertData.rowToBoard(rs));
 			}
 
 		} finally {
@@ -195,7 +187,7 @@ public class BoardDao {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				list.add(rowToBoard(rs));
+				list.add(ConvertData.rowToBoard(rs));
 			}
 
 		} finally {
@@ -230,7 +222,7 @@ public class BoardDao {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				board = rowToBoard(rs);
+				board = ConvertData.rowToBoard(rs);
 			}
 
 		} finally {

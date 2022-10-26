@@ -13,14 +13,17 @@ public class HistoryController implements IController {
 
 	@Override
 	public boolean process() {
-
+		System.out.println("내 구매내역을 확인 합니다.");
+		
 		List<Board> list = service.purchaseHistory();
 
-		for (Board b : list) {
-			System.out.println(b);
-
+		if(list != null && !list.isEmpty()) {
+			for (Board b : list) {
+				System.out.println(b);
+			}
+		} else {
+			System.out.println("현재 구매 내역이 없습니다!");
 		}
-
 		
 		return false;
 

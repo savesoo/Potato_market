@@ -3,6 +3,7 @@ package potato.util;
 import java.util.HashMap;
 import java.util.Map;
 
+// 출력 가독성을 위해 생성
 public class CategoryData {
 	
 	// 카테고리 숫자로 선택, 문자열로 출력

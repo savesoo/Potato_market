@@ -102,7 +102,7 @@ public class BoardDao {
 	
 // ------------------------------------------------------------------------------------
 
-	// DB에 저장된 전체 판매 게시글 불러오기
+	// 전체 판매 게시글 출력
 	public List<Board> selectBoard(Connection conn) throws SQLException { // throws 처리했으므로 catch문 삭제
 
 		List<Board> list = new ArrayList<>();
@@ -140,6 +140,7 @@ public class BoardDao {
 				rs.getString("tradeloc"));
 	}
 
+	
 	// 내 판매글(=판매내역) 조회. 단 판매상태는 구분 X
 	public List<Board> showsellHistory(Connection conn) throws SQLException {
 
@@ -176,7 +177,7 @@ public class BoardDao {
 	}
 
 	
-	// 판매상품으로 검색
+	// 판매상품을 키워드로 검색하기
 	public List<Board> searchBoardByProduct(Connection conn, String product) throws SQLException {
 
 		List<Board> list = new ArrayList<>();
@@ -210,6 +211,7 @@ public class BoardDao {
 	}
 
 	
+	// 사용자 권한 확인(본인인지)
 	// 입력받은 boardid와 내 userid가 일치하는 행을 출력
 	public Board verifyID(Connection conn, int boardid) throws SQLException {
 
@@ -217,7 +219,8 @@ public class BoardDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = "SELECT * FROM potato_board WHERE boardid=? and userid=?"; // boardid랑 내 userid로 select 받아옴 -> service call
+		String sql = "SELECT * FROM potato_board WHERE boardid=? and userid=?"; 
+		               // boardid랑 내 userid로 select 받아옴 -> service call
 
 		try {
 			pstmt = conn.prepareStatement(sql);

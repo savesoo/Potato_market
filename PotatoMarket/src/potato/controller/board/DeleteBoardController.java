@@ -19,7 +19,7 @@ public class DeleteBoardController implements IController {
 		System.out.println("삭제할 게시글 번호 >>");
 		int boardid = InputString.inputInt();
 		
-		// 작성자 아닐시 삭제 불가
+		// 작성자 아닐시 삭제 불가 처리
 		if(ps.verifyID(boardid)!=true) {
 			System.out.println("권한은 작성자 본인에게만 주어집니다.");
 			return false;

@@ -8,9 +8,9 @@ import potato.dao.BoardDao;
 import potato.domain.Board;
 import potato.util.ConnectionProvider;
 
+// 컨트롤러에서 요청을 받아와 게시물 리스트 출력 처리하는 클래스
 public class PrintBoardService {
 
-	// 컨트롤러에서 요청을 받아와 게시물 리스트 출력 처리하는 클래스
 	BoardDao dao;
 
 	public PrintBoardService(BoardDao dao) {
@@ -43,8 +43,9 @@ public class PrintBoardService {
 	}
 
 	
-// -------------------------------
+// -----------------------------------------------------
 
+	// 수정, 삭제시 사용할 권한 확인 기능
 	// boardid 랑 내 userid 일치하면 출력, 아니면 false
 	public boolean verifyID(int boardid) {
 

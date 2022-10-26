@@ -12,26 +12,19 @@ import potato.domain.Session;
 
 public class PurchaseDao {
 
-	public List<Board> purchaseHistory(Connection conn) throws SQLException {
+	public List<Board> buyHistory(Connection conn) throws SQLException {
 
-		List<Board> list = new ArrayList<>();
-		String userid;
+		List<Board> list = null;
+		String userid = Session.getInstance().getId();
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
-		String sql = "select * from potato_board where boardid = ? and userid != ? and salestatus = 1";
+		String sql = "select b.* from potato_trade t, potato_board b where t.boardid = b.boardid and t.userid = ?";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, Session.getInstance().getId());
+			pstmt.setString(1, userid);
 
 			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				list.add(rowToBoard(rs));
-			}
-			
-			
-			
 
 		} finally {
 			if (pstmt != null)
@@ -51,7 +44,7 @@ public class PurchaseDao {
 
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
-		String sql = "select * from potato_trade where userid != ? ";
+		String sql = "select * from potato_board where boardid = ? and userid != ? and salestatus = 1";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -61,8 +54,8 @@ public class PurchaseDao {
 			rs = pstmt.executeQuery();
 
 			// rs.next();
-						// -> true: 구매 가능한 상태이므로, 관련 처리를 해줍니다
-						// -> false: 구매 불가한 상태이므로, 관련 처리를 해줍니다
+			// -> true: 구매 가능한 상태이므로, 관련 처리를 해줍니다
+			// -> false: 구매 불가한 상태이므로, 관련 처리를 해줍니다
 
 		} finally {
 
@@ -75,12 +68,5 @@ public class PurchaseDao {
 		return list;
 
 	}
-	private Board rowToBoard(ResultSet rs) throws SQLException {
-		return new Board(rs.getInt("boardid"), rs.getString("userid"), rs.getInt("category"), rs.getString("product"),
-				rs.getInt("saleprice"), rs.getBoolean("salestatus"), rs.getString("writedate"),
-				rs.getString("tradeloc"));
-	}
 
 }
-
-

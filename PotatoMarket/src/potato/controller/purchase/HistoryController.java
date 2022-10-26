@@ -18,6 +18,7 @@ public class HistoryController implements IController {
 
 		for (Board b : list) {
 			System.out.println(b);
+
 		}
 
 		return false;

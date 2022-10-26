@@ -20,9 +20,10 @@ public class HistoryService {
 
 		List<Board> list = null;
 		Connection conn = null;
+		
 		try {
 			conn = ConnectionProvider.getConnection();
-			list = dao.purchaseHistory(conn);
+			list = dao.buyHistory(conn);
 
 		} catch (SQLException e) {
 			e.printStackTrace();

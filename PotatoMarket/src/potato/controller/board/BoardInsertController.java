@@ -5,6 +5,7 @@ import potato.dao.BoardDao;
 import potato.domain.Board;
 import potato.domain.Session;
 import potato.service.board.BoardInsertService;
+import potato.util.CategoryData;
 import potato.util.InputString;
 
 public class BoardInsertController implements IController {
@@ -36,11 +37,11 @@ public class BoardInsertController implements IController {
 		
 		if (result > 0) {
 			System.out.println("입력되었습니다.");
-			
-			System.out.println("=======================================");
-			System.out.println("아이디\t카테고리\t판매물품\t판매금액\t거래지역");
-			System.out.println("=======================================");
-			System.out.println(userid+"\t"+category+"\t"+product +"\t"+saleprice+"\t"+tradeloc);
+
+			System.out.println("=============================================");
+			System.out.println("아이디\t 카테고리\t판매물품\t판매금액\t거래지역");
+			System.out.println("=============================================");
+			System.out.println(userid+"\t" +CategoryData.names.get(category) + "\t"+product + "\t"+saleprice+ "\t"+tradeloc);
 			
 			
 		} else {

@@ -9,6 +9,8 @@ public class ConnectionProvider {
 	private static String dbId = "scott";
 	private static String dbPw = "test1234";
 	
+	private ConnectionProvider() {};
+	
 	public static void initializeConnect(String url, String id, String pw) {
 		dbUrl = url;
 		dbId = id;

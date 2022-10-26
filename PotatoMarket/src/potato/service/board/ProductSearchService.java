@@ -1,4 +1,4 @@
-package potato.service;
+package potato.service.board;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -8,28 +8,31 @@ import potato.dao.BoardDao;
 import potato.domain.Board;
 import potato.util.ConnectionProvider;
 
-// 내 판매 내역 확인 처리
-public class SellHistoryService {
-	
+// 상품명으로 검색 처리
+public class ProductSearchService {
+
 	BoardDao dao;
-	
-	public SellHistoryService(BoardDao dao) {
+
+	public ProductSearchService(BoardDao dao) {
 		this.dao = dao;
 	}
-	
-	public List<Board> mySellHistory() {
-		
-		Connection conn =null;
-		List<Board> list =null;
+
+	public List<Board> productSearch(String product) {
+
+		List<Board> list = null;
+		Connection conn = null;
 
 		try {
-			conn = ConnectionProvider.getConnection();
-			list = dao.showsellHistory(conn);
 			
+			conn = ConnectionProvider.getConnection();
+			list = dao.searchBoardByProduct(conn, product);
+
 		} catch (SQLException e) {
 			e.printStackTrace();
+
 		} finally {
-			if(conn!=null) {
+			if (conn != null) {
+
 				try {
 					conn.close();
 				} catch (SQLException e) {
@@ -37,9 +40,8 @@ public class SellHistoryService {
 				}
 			}
 		}
-		
+
 		return list;
-		
 	}
 
 }

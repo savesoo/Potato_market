@@ -5,7 +5,7 @@ import java.util.List;
 import potato.controller.IController;
 import potato.dao.BoardDao;
 import potato.domain.Board;
-import potato.service.SellHistoryService;
+import potato.service.board.SellHistoryService;
 
 //서비스에 내 판매 내역 확인 요청
 public class SellHistoryController implements IController {

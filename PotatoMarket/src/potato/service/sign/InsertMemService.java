@@ -1,4 +1,4 @@
-package potato.service;
+package potato.service.sign;
 
 import java.sql.Connection;
 import java.sql.SQLException;

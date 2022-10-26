@@ -2,7 +2,7 @@ package potato.controller.sign;
 
 import potato.controller.IController;
 import potato.domain.UserData;
-import potato.service.EditMemService;
+import potato.service.sign.EditMemService;
 import potato.util.EncryptString;
 import potato.util.InputString;
 

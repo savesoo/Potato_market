@@ -2,8 +2,8 @@ package potato.controller.board;
 
 import potato.controller.IController;
 import potato.dao.BoardDao;
-import potato.service.DeleteBoardService;
-import potato.service.PrintBoardService;
+import potato.service.board.DeleteBoardService;
+import potato.service.board.PrintBoardService;
 import potato.util.InputString;
 
 public class DeleteBoardController implements IController {

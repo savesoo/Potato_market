@@ -1,4 +1,4 @@
-package potato.service;
+package potato.service.board;
 
 import java.sql.Connection;
 import java.sql.SQLException;

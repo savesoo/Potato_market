@@ -6,7 +6,7 @@ import potato.controller.IController;
 import potato.dao.ProcessingDao;
 import potato.domain.Board;
 import potato.domain.Session;
-import potato.service.ProcessingService;
+import potato.service.purchase.ProcessingService;
 import potato.util.InputString;
 
 public class ProcessingController implements IController {
@@ -37,7 +37,7 @@ public class ProcessingController implements IController {
 
 		Board board = null;
 		try {
-			board = sevice.processing(new Board());
+			board = service.processing(new Board());
 			catch(SQLException e) {
 				e.printStackTrace();
 				
@@ -46,7 +46,7 @@ public class ProcessingController implements IController {
 		
 		
 		}
-		
+		return false;
 	} 
 
 }

@@ -1,40 +1,39 @@
-package potato.service;
+package potato.service.sign;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-
 
 import potato.dao.UserDao;
 import potato.domain.UserData;
 import potato.util.ConnectionProvider;
 
-public class ViewInfoService {
+public class EditMemService {
 
 	UserDao dao = new UserDao();
 
-	public UserData viewInfo() {
-
-		UserData userdata = null;
+	public boolean editMem(UserData userdata) {
 		Connection conn = null;
+		boolean result = false;
 
 		try {
 			conn = ConnectionProvider.getConnection();
-			userdata = dao.viewInfo(conn);
-		}
-
-		catch (SQLException e) {
+			if (dao.editMem(conn, userdata) == 1) {
+				result = true;
+			}
+		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			if (conn != null) {
 				try {
 					conn.close();
 				} catch (SQLException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-
 			}
-
 		}
-		return userdata;
+
+		return result;
 	}
+
 }

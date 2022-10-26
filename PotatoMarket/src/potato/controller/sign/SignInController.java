@@ -3,7 +3,7 @@ package potato.controller.sign;
 import potato.controller.IController;
 import potato.domain.LoginData;
 import potato.domain.Session;
-import potato.service.UserService;
+import potato.service.sign.UserService;
 import potato.util.EncryptString;
 import potato.util.InputString;
 

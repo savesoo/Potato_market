@@ -2,8 +2,8 @@ package potato.controller.sign;
 
 import potato.controller.IController;
 import potato.domain.UserData;
-import potato.service.CheckIdService;
-import potato.service.InsertMemService;
+import potato.service.sign.CheckIdService;
+import potato.service.sign.InsertMemService;
 import potato.util.EncryptString;
 import potato.util.InputString;
 

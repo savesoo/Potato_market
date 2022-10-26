@@ -14,7 +14,7 @@ import potato.domain.Session;
 import potato.process.command.AbsCommand;
 import potato.process.command.LoginCommand;
 import potato.process.command.MainCommand;
-import potato.service.UserService;
+import potato.service.sign.UserService;
 import potato.util.ConnectionProvider;
 import potato.util.InputString;
 

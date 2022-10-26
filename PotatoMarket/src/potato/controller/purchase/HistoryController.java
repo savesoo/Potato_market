@@ -3,7 +3,7 @@ package potato.controller.purchase;
 import potato.controller.IController;
 import potato.dao.HistoryDao;
 import potato.domain.HistoryData;
-import potato.service.HistoryService;
+import potato.service.purchase.HistoryService;
 import potato.util.InputString;
 
 public class HistoryController implements IController {

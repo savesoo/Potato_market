@@ -4,7 +4,7 @@ import potato.controller.IController;
 import potato.dao.BoardDao;
 import potato.domain.Board;
 import potato.domain.Session;
-import potato.service.InsertBoardService;
+import potato.service.board.InsertBoardService;
 import potato.util.InputString;
 
 public class InsertBoardController implements IController {

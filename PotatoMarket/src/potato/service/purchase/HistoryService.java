@@ -1,4 +1,4 @@
-package potato.service;
+package potato.service.purchase;
 
 import java.sql.Connection;
 import java.sql.SQLException;

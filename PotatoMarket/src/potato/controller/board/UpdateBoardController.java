@@ -1,8 +1,8 @@
 package potato.controller.board;
 
 import potato.domain.Board;
-import potato.service.PrintBoardService;
-import potato.service.UpdateBoardService;
+import potato.service.board.PrintBoardService;
+import potato.service.board.UpdateBoardService;
 import potato.util.InputString;
 import potato.controller.IController;
 import potato.dao.BoardDao;

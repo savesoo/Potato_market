@@ -2,7 +2,7 @@ package potato.controller.sign;
 
 import potato.controller.IController;
 import potato.domain.UserData;
-import potato.service.ViewInfoService;
+import potato.service.sign.ViewInfoService;
 
 public class ViewInfoController implements IController {
 

@@ -7,7 +7,7 @@ import potato.dao.BoardDao;
 import potato.domain.Board;
 import potato.process.command.AbsCommand;
 import potato.process.command.BoardCommand;
-import potato.service.PrintBoardService;
+import potato.service.board.PrintBoardService;
 import potato.util.InputString;
 
 // 게시물 리스트 출력을 서비스에 요청하는 서비스 클래스

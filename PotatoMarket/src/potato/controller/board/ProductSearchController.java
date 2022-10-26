@@ -5,7 +5,7 @@ import java.util.List;
 import potato.controller.IController;
 import potato.dao.BoardDao;
 import potato.domain.Board;
-import potato.service.ProductSearchService;
+import potato.service.board.ProductSearchService;
 import potato.util.InputString;
 
 // 서비스 클래스에 상품명으로 검색 요청

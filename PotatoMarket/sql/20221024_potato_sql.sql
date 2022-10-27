@@ -1,3 +1,7 @@
+DROP TABLE `potato_trade`;
+DROP TABLE `potato_board`;
+DROP TABLE `potato_user`;
+
 CREATE TABLE `potato_user` (
   `userid` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,

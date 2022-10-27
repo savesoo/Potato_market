@@ -4,6 +4,17 @@ java console + jdbc를 활용한 미니 프로젝트입니다.
 작업자: <a href = "https://github.com/Seo-Aram">@Seo-Aram</a>, <a href = "https://github.com/savesoo">@savesoo</a>, <a href = "https://github.com/himediahj">@himediahj</a>, <a href = "https://github.com/himediabyul">@himediabyul</a>, <a href = "https://github.com/0808min">@0808min</a>
 </pre>
 -----
+## 기술 구조
+* JAVA
+  * JDBC
+  * MVC Pattern
+  * JSON Parser
+  * AES256 Encrypt
+  * Serializable
+* DBMS - MySQL
+  * RDS
+* SQL
+----
 ## 개요
 본 프로젝트는 중고 거래 플랫폼에서 볼 수 있는 기능들을 콘솔 창에서도 비슷하게 이용할 수 있습니다. JAVA-SE17, MySql-8을 이용하여 개발 되었으며, 주요 기능은 다음과 같습니다.   
 * 회원
@@ -34,4 +45,9 @@ java console + jdbc를 활용한 미니 프로젝트입니다.
 * 내가 판매한 내역, 내가 구매한 글의 목록을 화면에 표시해줍니다.
 * 회원 정보를 조회하고, 내 정보를 수정할 수 있습니다.
 ---
-
+## 테스트 방법
+1. MySQL-8 / JAVA-SE 17 이상 세팅 환경 설정
+3. config.json 파일에 DB 접속 설정 변경
+2. sql폴더에 위치한 .sql 파일을 빠른 날짜부터 실행(테이블 / 테스트 데이터 세팅)
+4. 프로그램 실행(src 하위의 Main.java) 후 로그인
+5. 콘솔 메뉴에 따라 테스트 진행
